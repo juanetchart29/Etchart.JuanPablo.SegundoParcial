@@ -1,0 +1,11 @@
+C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\bin\Debug\net6.0\Etchart.JuanPablo.deps.json
+C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\bin\Debug\net6.0\Etchart.JuanPablo.dll
+C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\bin\Debug\net6.0\Etchart.JuanPablo.pdb
+C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\obj\Debug\net6.0\Etchart.JuanPablo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\obj\Debug\net6.0\Etchart.JuanPablo.AssemblyInfoInputs.cache
+C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\obj\Debug\net6.0\Etchart.JuanPablo.AssemblyInfo.cs
+C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\obj\Debug\net6.0\Etchart.JuanPablo.csproj.CoreCompileInputs.cache
+C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\obj\Debug\net6.0\Etchart.JuanPablo.dll
+C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\obj\Debug\net6.0\refint\Etchart.JuanPablo.dll
+C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\obj\Debug\net6.0\Etchart.JuanPablo.pdb
+C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\obj\Debug\net6.0\ref\Etchart.JuanPablo.dll

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "FXuPdZrwNlTvTsG6jT/XnPzKNxdGuxQw/CPLsUujoaVHappX4v6MvpAX3CaHCe/lZI/czF1LjgzOnXAS4hggcw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Juan Pablo Etchart\\Desktop\\Progra 2\\Etchart.JuanPablo.SegundoParcial\\FRMDeportistas\\FRMDeportistas.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Juan Pablo Etchart\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

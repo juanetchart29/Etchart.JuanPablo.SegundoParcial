@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="AgregarPorDeporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FRMIngresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FRMLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FRMAgragarDeportista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FRMAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FRMAgregarAtletismo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FRMAgregarEscalada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FRMAgregarVoley.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FRMMenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FRMSeleccionarJson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FRMVerClasificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

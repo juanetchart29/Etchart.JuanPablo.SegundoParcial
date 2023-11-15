@@ -1,0 +1,71 @@
+[
+  {
+    "deporte": "atletismo",
+    "Categoria": "Juvenil",
+    "Disciplina": "vela",
+    "Nombre": "luiz",
+    "Apellido": "luiz",
+    "Edad": 43444,
+    "Dni": "5343",
+    "Genero": "Femenino",
+    "AptoMedico": false,
+    "Federado": false,
+    "NombreApellido": "luiz, luiz"
+  },
+  {
+    "deporte": "escalada",
+    "Grado": "10a+",
+    "Modalidad": "Velocidad",
+    "Categoria": "Mayores",
+    "Nombre": "luck ra",
+    "Apellido": "como olvidarla",
+    "Edad": 99,
+    "Dni": "5555555555",
+    "Genero": "Femenino",
+    "AptoMedico": false,
+    "Federado": true,
+    "NombreApellido": "luck ra, como olvidarla"
+  },
+  {
+    "deporte": "escalada",
+    "Grado": "9a+",
+    "Modalidad": "Boulder",
+    "Categoria": "Mayores",
+    "Nombre": "jose",
+    "Apellido": "jose ",
+    "Edad": 555,
+    "Dni": "434444444444",
+    "Genero": "Femenino",
+    "AptoMedico": true,
+    "Federado": false,
+    "NombreApellido": "jose, jose "
+  },
+  {
+    "deporte": "voley",
+    "Posicion": "central",
+    "Altura": 3333333.0,
+    "PartidosJugados": 44,
+    "Categoria": "Cadete",
+    "Nombre": "lautaro",
+    "Apellido": "paredes",
+    "Edad": 55,
+    "Dni": "44444322222222",
+    "Genero": "Femenino",
+    "AptoMedico": false,
+    "Federado": true,
+    "NombreApellido": "lautaro, paredes"
+  },
+  {
+    "deporte": "atletismo",
+    "Categoria": "Senior",
+    "Disciplina": "postas",
+    "Nombre": "la gallina turuleka",
+    "Apellido": "ha puesto 2",
+    "Edad": 66,
+    "Dni": "55566666",
+    "Genero": "Femenino",
+    "AptoMedico": true,
+    "Federado": true,
+    "NombreApellido": "la gallina turuleka, ha puesto 2"
+  }
+]
