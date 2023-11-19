@@ -23,7 +23,6 @@ namespace Entidades
         }
         public AccesoDatos()
         {
-
             conexion = new SqlConnection(AccesoDatos.cadena_conexion);
         }
 
@@ -49,43 +48,65 @@ namespace Entidades
             }
             return retorno;
         }
-        public void AsignarParametrosVoley()
+        public void AsignarParametrosDeportista(Deportista deportista)
         {
-
+            this.comando.Parameters.AddWithValue("@nombre", deportista.Nombre);
+            this.comando.Parameters.AddWithValue("@apellido", deportista.Apellido);
+            this.comando.Parameters.AddWithValue("@edad", deportista.Edad);
+            this.comando.Parameters.AddWithValue("@dni", deportista.Dni);
+            this.comando.Parameters.AddWithValue("@aptoMedico", deportista.AptoMedico);
+            this.comando.Parameters.AddWithValue("@federado", deportista.Federado);
+            this.comando.Parameters.AddWithValue("@genero", deportista.Genero);
         }
-        public void AsignarParametrosEscalada()
-        {
 
+        public void AsignarParametrosVoley(Voley deportista)
+        {
+            this.comando.Parameters.AddWithValue("@posicion", deportista.Posicion);
+            this.comando.Parameters.AddWithValue("@altura", deportista.Altura);
+            this.comando.Parameters.AddWithValue("@partidosJugados", deportista.PartidosJugados);
+            this.comando.Parameters.AddWithValue("@categoria", deportista.Categoria);
         }
-        public void AsignarParametrosAtletismo  ()
+        public void AsignarParametrosEscalada(Escalada deportista )
         {
-
+            this.comando.Parameters.AddWithValue("@grado", deportista.Grado);
+            this.comando.Parameters.AddWithValue("@categoria", deportista.Categoria);
+            this.comando.Parameters.AddWithValue("@modalidad", deportista.Modalidad);
+        }
+        public void AsignarParametrosAtletismo(Atletismo deportista)
+        {
+            this.comando.Parameters.AddWithValue("@categoria", deportista.Categoria);
+            this.comando.Parameters.AddWithValue("@disciplina", deportista.Disciplina);
         }
         public List<T> TraerDatos<T>() where T : Deportista, new()
         {
             List<T> lista = new List<T>();
+
+            this.comando = new SqlCommand();
+            this.comando.CommandType = System.Data.CommandType.Text; // enum indica que va a ejecutar si es text --> una consulta, table ->taba
+
             string tipoDeDato = typeof(T).Name;
-                this.comando = new SqlCommand();
-                this.comando.CommandType = System.Data.CommandType.Text; // enum indica que va a ejecutar si es text --> una consulta, table ->taba
-                this.comando.Parameters.AddWithValue("@nombre", deportista.Nombre);
-                this.comando.Parameters.AddWithValue("@apellido", deportista.Apellido);
-                this.comando.Parameters.AddWithValue("@nombre", deportista.Nombre);
-                this.comando.Parameters.AddWithValue("@nombre", deportista.Nombre);
-                this.comando.Parameters.AddWithValue("@nombre", deportista.Nombre);
+            switch(tipoDeDato)
+            {
+                case "Escalada":
+
+                    Escalada escalada = new Escalada();
+                    this.AsignarParametrosDeportista(escalada);
+                    this.AsignarParametrosEscalada(escalada);
+                    this.comando.CommandText = "select id "
+                    break;
+                case "Voley":
+                    Voley voley= new Voley();
+                    this.AsignarParametrosDeportista(voley);
+                    this.AsignarParametrosVoley(voley);
+                    break;
+                case "Atletismo":
+                    Atletismo atletismo = new Atletismo();
+                    this.AsignarParametrosDeportista(atletismo);
+                    this.AsignarParametrosAtletismo(atletismo); 
+                    break;
+            }
             try
             {
-
-                switch (tipoDeDato)
-                {
-                    case "Escaldada":
-
-                        break;
-                    case "Voley":
-                        break;
-                    case "Atletismo":
-                        break;
-
-                }
                 this.comando.CommandText = "select id,cadena, from dato";
                 this.comando.Connection = this.conexion;
 
