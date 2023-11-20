@@ -67,6 +67,9 @@ namespace Entidades
         }
         public void AsignarParametrosDeportista(Deportista deportista)
         {
+            //LIMPIO mis parametros y luego asigno los del objeto
+            this.comando.Parameters.Clear();
+            this.comando.Parameters.AddWithValue("@id", deportista.Id);
             this.comando.Parameters.AddWithValue("@nombre", deportista.Nombre);
             this.comando.Parameters.AddWithValue("@apellido", deportista.Apellido);
             this.comando.Parameters.AddWithValue("@edad", deportista.Edad);
@@ -119,7 +122,7 @@ namespace Entidades
         }
         public void AsignarAtributosDeportista(Deportista deportista)
         {
-            deportista.id = this.lector.GetInt32(0);
+            deportista.Id = (int)this.lector.GetInt32(0);
 
             deportista.Nombre = (string)this.lector["nombre"];
             deportista.Apellido = (string)this.lector["apellido"];
@@ -259,10 +262,9 @@ namespace Entidades
             bool retorno = false;
             try
             {
-                this.conexion.Open();
                 this.comando = new SqlCommand();
                 this.comando.CommandType = System.Data.CommandType.Text;
-                this.comando.Connection = this.conexion;
+
 
                 AsignarParametrosDeportista(deportista);
                 if (deportista is Voley)
@@ -279,19 +281,26 @@ namespace Entidades
                 }
                 else if (deportista is Atletismo)
                 {
+
                     AsignarParametrosDeportista(deportista);
                     AsignarParametrosAtletismo(deportista as Atletismo);
                     this.comando.CommandText = "UPDATE Atletismo SET nombre = @nombre, apellido = @apellido, edad = @edad, dni = @dni, aptoMedico = @aptoMedico, federado = @federado, genero = @genero, categoria = @categoria, disciplina = @disciplina WHERE id = @id";
                 }
 
+                this.comando.Connection = this.conexion;
+                this.conexion.Open();
                 int filasAfectadas = this.comando.ExecuteNonQuery();
-                if (filasAfectadas == 1)
+                if (filasAfectadas ==1)
                 {
                     this.ActualizarListas();
                     retorno = true;
                 }
+                else if (filasAfectadas==0)
+                {
+                    
+                }
             }
-            catch
+            catch (Exception ex) 
             {
                 // Handle exceptions if needed
             }

@@ -82,13 +82,14 @@ namespace FRMDeportistas
                 Atletismo atletismo = new Atletismo(this.edad, this.nombre, this.apellido, this.dni, this.genero, this.aptoMedico, this.federado, this.disciplina, this.Categoria);
                 if (objetoModificar is not null)
                 {
-                    ok = clasificacion.ModificarDato(atletismo);
+                    atletismo.Id = objetoModificar.Id;
+                    
+                    MessageBox.Show(clasificacion.ModificarDato(atletismo).ToString());
                 }
                 else
                 {
-                    ok = clasificacion.AgregarDato(atletismo);
+                    clasificacion.AgregarDato(atletismo);
                 }
-                MessageBox.Show(ok.ToString());
                 this.Close();
             }
         }

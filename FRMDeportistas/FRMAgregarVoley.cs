@@ -91,14 +91,15 @@ namespace FRMDeportistas
             {
                 this.AsignarValores();
                 Voley voley = new Voley(this.edad, this.nombre, this.apellido, this.dni, this.genero, this.aptoMedico, this.federado, this.partidosJugados, this.altura, this.posicion, this.categoria);
-                //if (objetoModificar is not null)
-                //{
-                //    clasificacion -= objetoModificar;
-                //    clasificacion.MandarDeportistas();
-                //}
-                ok = clasificacion.AgregarDato(voley);
-                MessageBox.Show(ok.ToString());
-
+                if (objetoModificar is not null)
+                {
+                    voley.Id = objetoModificar.Id;
+                    ok = clasificacion.ModificarDato(voley);
+                }
+                else
+                {
+                    ok = clasificacion.AgregarDato(voley);
+                }
                 this.Close();
             }
         }

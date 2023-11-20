@@ -7,7 +7,7 @@ namespace Etchart.JuanPablo
     /// </summary>
     public abstract class Deportista
     {
-        public int id;
+        private int id;
         private string nombre;
         private string apellido;
         private int edad;
@@ -111,6 +111,8 @@ namespace Etchart.JuanPablo
         /// Obtiene el nombre y apellido del deportista en formato "Apellido, Nombre".
         /// </summary>
         public string NombreApellido { get { return $"{this.nombre}, {this.apellido}"; } }
+
+        public int Id { get => id; set => id = value; }
         #endregion
 
         #region Sobrecargas y Polimorfismo

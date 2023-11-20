@@ -41,7 +41,7 @@ namespace FRMDeportistas
         private void btnEscalada_Click(object sender, EventArgs e)
         {
             this.dataGrid.DataSource = null; // Limpia el DataGridView
-            MessageBox.Show(clasificacion.ToString());
+            
             this.dataGrid.DataSource = clasificacion.listaEscalada;
             this.ultimoBotonPresionado = ETipoDeDeportista.Escalada.ToString();
         }
@@ -53,7 +53,6 @@ namespace FRMDeportistas
         private void btnAtletismo_Click(object sender, EventArgs e)
         {
             this.dataGrid.DataSource = null; // Limpia el DataGridView
-            MessageBox.Show(clasificacion.ToString());
             this.dataGrid.DataSource = clasificacion.listaAtletismo;
             this.ultimoBotonPresionado = ETipoDeDeportista.Atletismo.ToString();
         }
@@ -65,7 +64,6 @@ namespace FRMDeportistas
         private void btnVoley_Click(object sender, EventArgs e)
         {
             this.dataGrid.DataSource = null; // Limpia el DataGridView
-            MessageBox.Show(clasificacion.ToString());
             this.dataGrid.DataSource = clasificacion.listaVoley;
             this.ultimoBotonPresionado = ETipoDeDeportista.Voley.ToString();
         }

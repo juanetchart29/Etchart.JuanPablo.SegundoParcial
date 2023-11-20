@@ -1,4 +1,5 @@
 EXTRA:
+agregarle el id a mi constructor
 OPCIONAL:
 
 -separar todo en Region y EndRegion
