@@ -84,30 +84,25 @@ namespace Entidades
             this.comando = new SqlCommand();
             this.comando.CommandType = System.Data.CommandType.Text; // enum indica que va a ejecutar si es text --> una consulta, table ->taba
 
+            //designo lo que le voy a pedir generico para un deportista
+            // como aca tengo que traer los datos voy a traer todo entonces no hace falta en este caso hacerlo asi, ahora tengo que tener en eucneta que en mi anteriori programa estaba eliminando los datos y volviendo a crearlos en vez de actualizarlos ahora tengo que actualizarlos usando las propiedades
             string tipoDeDato = typeof(T).Name;
             switch(tipoDeDato)
             {
                 case "Escalada":
 
                     Escalada escalada = new Escalada();
-                    this.AsignarParametrosDeportista(escalada);
-                    this.AsignarParametrosEscalada(escalada);
-                    this.comando.CommandText = "select id ";
                     break;
                 case "Voley":
                     Voley voley= new Voley();
-                    this.AsignarParametrosDeportista(voley);
-                    this.AsignarParametrosVoley(voley);
                     break;
                 case "Atletismo":
                     Atletismo atletismo = new Atletismo();
-                    this.AsignarParametrosDeportista(atletismo);
-                    this.AsignarParametrosAtletismo(atletismo); 
                     break;
             }
             try
             {
-                this.comando.CommandText = "select id,cadena, from dato";
+                this.comando.CommandText = "";
                 this.comando.Connection = this.conexion;
 
                 this.conexion.Open();
