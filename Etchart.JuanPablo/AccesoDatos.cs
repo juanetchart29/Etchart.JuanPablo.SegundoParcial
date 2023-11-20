@@ -202,8 +202,8 @@ namespace Entidades
             bool retorno = false;
             try
             {
-
                 this.conexion.Open();
+
                 this.comando = new SqlCommand();
                 this.comando.CommandType = System.Data.CommandType.Text;
                 AsignarParametrosDeportista(deportista);
@@ -234,6 +234,9 @@ namespace Entidades
                 int filasAfectadas = this.comando.ExecuteNonQuery();
                 if(filasAfectadas == 1 ) 
                 {
+                    //una vez que se realizo la carga de mis datos actualizo par tener en mis listas locales el id
+                    this.ActualizarListas();
+
                     retorno = true;
                 }
             }
