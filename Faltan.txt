@@ -11,3 +11,11 @@ chequear como se elimina un objeto, hacer la funcion en AccesoDatos y llamarla e
 -crear funcion par actualiza las listas 
 
 enascender y desdecender tengo que actualizar la base de datos :(
+
+
+---------manejar errores con delegados y eventos----
+
+
+
+-----Hacer que segun el tipo de persona puedea hacer tantas cosa-----
+hacer en el contructor que segun el nivel de permisos, esconderle los botones para que no pueda presionarlos 

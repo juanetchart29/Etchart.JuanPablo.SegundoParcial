@@ -29,16 +29,20 @@ namespace Entidades
         public AccesoDatos()
         {
             conexion = new SqlConnection(AccesoDatos.cadena_conexion);
+
             this.listaEscalada = new List<Escalada>();
             this.listaAtletismo = new List<Atletismo>();
             this.listaVoley = new List<Voley>();
 
+            this.ActualizarListas();
+
+        }
+        public void ActualizarListas()
+        {
             this.listaEscalada = this.TraerDatos<Escalada>();
             this.listaVoley = this.TraerDatos<Voley>();
             this.listaAtletismo = this.TraerDatos<Atletismo>();
-
         }
-
 
         public bool pruebaConexion()
         {
