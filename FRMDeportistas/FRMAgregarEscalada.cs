@@ -81,11 +81,10 @@ namespace FRMDeportistas
             {
                 this.AsignarValores();
                 Escalada escalada = new Escalada(this.edad, this.nombre, this.apellido, this.dni, this.genero, this.aptoMedico, this.federado, this.categoria, this.grado, this.modalidad);
-                //if (objetoModificar is not null)
-                //{
-                //    clasificacion -= objetoModificar;
-                //    clasificacion.MandarDeportistas();
-                //}
+                if (objetoModificar is not null)
+                {
+                    clasificacion.ModificarDato(objetoModificar);
+                }
                 ok = clasificacion.AgregarDato(escalada);
                 MessageBox.Show(ok.ToString());
 

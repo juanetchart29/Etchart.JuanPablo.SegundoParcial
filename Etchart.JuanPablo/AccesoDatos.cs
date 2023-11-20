@@ -96,6 +96,96 @@ namespace Entidades
         }
 
 
+        public void AsignarAtributosEscalada(Escalada deportista)
+        {
+            deportista.Grado = (string)this.lector["grado"];
+            deportista.Modalidad = (string)this.lector["modalidad"];
+            deportista.Categoria = (string)this.lector["categoria"];
+        }
+        public void AsignarAtributosAtletismo(Atletismo deportista) 
+        {
+            deportista.Categoria = (string)this.lector["categoria"];
+            deportista.Disciplina = (string)this.lector["disciplina"];
+
+        }
+        public void AsignarAtributosVoley(Voley deportista)
+        {
+            deportista.Posicion = (string)this.lector["posicion"];
+     
+            deportista.Altura = (float)this.lector.GetDouble(9);
+
+            deportista.PartidosJugados = (int)this.lector.GetInt32(10);
+            deportista.Categoria = (string)this.lector["categoria"];
+        }
+        public void AsignarAtributosDeportista(Deportista deportista)
+        {
+            deportista.id = this.lector.GetInt32(0);
+
+            deportista.Nombre = (string)this.lector["nombre"];
+            deportista.Apellido = (string)this.lector["apellido"];
+            deportista.Edad = this.lector.GetInt32(3);
+            deportista.Dni = (string)this.lector["dni"];
+            deportista.Genero = (string)this.lector["genero"];
+            deportista.AptoMedico = (bool)this.lector.GetBoolean(6);
+            deportista.Federado = (bool)this.lector.GetBoolean(7);
+        }
+
+        public bool AgregarDato(Deportista deportista)
+        {
+            bool retorno = false;
+            try
+            {
+                this.conexion.Open();
+
+                this.comando = new SqlCommand();
+                this.comando.CommandType = System.Data.CommandType.Text;
+                AsignarParametrosDeportista(deportista);
+                if (deportista is Escalada)
+                {
+                    AsignarParametrosEscalada((Escalada)deportista);
+                    this.listaEscalada.Add((Escalada)deportista);
+                    this.comando.CommandText = "INSERT into Escalada (nombre,apellido,edad,dni,aptoMedico,federado,genero,grado,categoria,modalidad) " +
+                    "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@grado,@categoria,@modalidad)";
+                }
+                else if (deportista is Voley) 
+                {
+                    AsignarParametrosVoley((Voley)deportista);
+                    this.listaVoley.Add((Voley)deportista);
+                    this.comando.CommandText = "INSERT into Voley (nombre,apellido,edad,dni,aptoMedico,federado,genero,posicion,altura,partidosJugados,categoria) " +
+                    "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@posicion,@altura,@partidosJugados,@categoria)";
+                }
+                else if (deportista is Atletismo)
+                {
+                    AsignarParametrosAtletismo((Atletismo)deportista);
+                    this.listaAtletismo.Add((Atletismo)deportista);
+                    this.comando.CommandText = "INSERT into Atletismo (nombre,apellido,edad,dni,aptoMedico,federado,genero,categoria,disciplina) " +
+                    "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@categoria,@disciplina)";
+                }
+
+                this.comando.Connection = this.conexion;
+                
+                int filasAfectadas = this.comando.ExecuteNonQuery();
+                if(filasAfectadas == 1 ) 
+                {
+                    //una vez que se realizo la carga de mis datos actualizo par tener en mis listas locales el id
+                    this.ActualizarListas();
+
+                    retorno = true;
+                }
+            }
+            catch   ( Exception e )
+            {
+                // Handle exceptions if needed
+            }
+            finally
+            {
+                if (this.conexion.State == System.Data.ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+            return retorno;
+        }
         public List<T> TraerDatos<T>() where T : Deportista, new()
         {
             List<T> lista = new List<T>();
@@ -164,110 +254,40 @@ namespace Entidades
 
             return lista;
         }
-        public void AsignarAtributosEscalada(Escalada deportista)
-        {
-            deportista.Grado = (string)this.lector["grado"];
-            deportista.Modalidad = (string)this.lector["modalidad"];
-            deportista.Categoria = (string)this.lector["categoria"];
-        }
-        public void AsignarAtributosAtletismo(Atletismo deportista) 
-        {
-            deportista.Categoria = (string)this.lector["categoria"];
-            deportista.Disciplina = (string)this.lector["disciplina"];
-
-        }
-        public void AsignarAtributosVoley(Voley deportista)
-        {
-            deportista.Posicion = (string)this.lector["posicion"];
-     
-            deportista.Altura = (float)this.lector.GetDouble(9);
-
-            deportista.PartidosJugados = (int)this.lector.GetInt32(10);
-            deportista.Categoria = (string)this.lector["categoria"];
-        }
-        public void AsignarAtributosDeportista(Deportista deportista)
-        {
-            deportista.id = this.lector.GetInt32(0);
-
-            deportista.Nombre = (string)this.lector["nombre"];
-            deportista.Apellido = (string)this.lector["apellido"];
-            deportista.Edad = this.lector.GetInt32(3);
-            deportista.Dni = (string)this.lector["dni"];
-            deportista.Genero = (string)this.lector["genero"];
-            deportista.AptoMedico = (bool)this.lector.GetBoolean(6);
-            deportista.Federado = (bool)this.lector.GetBoolean(7);
-        }
-        public bool AgregarDato(Deportista deportista)
-        {
-            bool retorno = false;
-            try
-            {
-                this.conexion.Open();
-
-                this.comando = new SqlCommand();
-                this.comando.CommandType = System.Data.CommandType.Text;
-                AsignarParametrosDeportista(deportista);
-                if (deportista is Escalada)
-                {
-                    AsignarParametrosEscalada((Escalada)deportista);
-                    this.listaEscalada.Add((Escalada)deportista);
-                    this.comando.CommandText = "INSERT into Escalada (nombre,apellido,edad,dni,aptoMedico,federado,genero,grado,categoria,modalidad) " +
-                    "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@grado,@categoria,@modalidad)";
-                }
-                else if (deportista is Voley) 
-                {
-                    AsignarParametrosVoley((Voley)deportista);
-                    this.listaVoley.Add((Voley)deportista);
-                    this.comando.CommandText = "INSERT into Voley (nombre,apellido,edad,dni,aptoMedico,federado,genero,posicion,altura,partidosJugados,categoria) " +
-                    "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@posicion,@altura,@partidosJugados,@categoria)";
-                }
-                else if (deportista is Atletismo)
-                {
-                    AsignarParametrosAtletismo((Atletismo)deportista);
-                    this.listaAtletismo.Add((Atletismo)deportista);
-                    this.comando.CommandText = "INSERT into Atletismo (nombre,apellido,edad,dni,aptoMedico,federado,genero,categoria,disciplina) " +
-                    "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@categoria,@disciplina)";
-                }
-
-                this.comando.Connection = this.conexion;
-                
-                int filasAfectadas = this.comando.ExecuteNonQuery();
-                if(filasAfectadas == 1 ) 
-                {
-                    //una vez que se realizo la carga de mis datos actualizo par tener en mis listas locales el id
-                    this.ActualizarListas();
-
-                    retorno = true;
-                }
-            }
-            catch   ( Exception e )
-            {
-                // Handle exceptions if needed
-            }
-            finally
-            {
-                if (this.conexion.State == System.Data.ConnectionState.Open)
-                {
-                    this.conexion.Close();
-                }
-            }
-            return retorno;
-        }
-
         public bool ModificarDato(Deportista deportista)
         {
             bool retorno = false;
             try
             {
+                this.conexion.Open();
                 this.comando = new SqlCommand();
-                this.comando.Parameters.AddWithValue("@cadena", deportista.Nombre);
                 this.comando.CommandType = System.Data.CommandType.Text;
-                this.comando.CommandText = "update dato set cadena = @cadena , entero = @entero where id = @id";
                 this.comando.Connection = this.conexion;
+
+                AsignarParametrosDeportista(deportista);
+                if (deportista is Voley)
+                {
+                    AsignarParametrosDeportista(deportista);
+                    AsignarParametrosVoley(deportista as Voley);
+                    this.comando.CommandText = "UPDATE Voley SET nombre = @nombre, apellido = @apellido, edad = @edad, dni = @dni, aptoMedico = @aptoMedico, federado = @federado, genero = @genero, posicion = @posicion, altura = @altura, partidosJugados = @partidosJugados, categoria = @categoria WHERE id = @id";
+                }
+                else if (deportista is Escalada)
+                {
+                    AsignarParametrosDeportista(deportista);
+                    AsignarParametrosEscalada(deportista as Escalada);
+                    this.comando.CommandText = "UPDATE Escalada SET nombre = @nombre, apellido = @apellido, edad = @edad, dni = @dni, aptoMedico = @aptoMedico, federado = @federado, genero = @genero, grado = @grado, categoria = @categoria, modalidad = @modalidad WHERE id = @id";
+                }
+                else if (deportista is Atletismo)
+                {
+                    AsignarParametrosDeportista(deportista);
+                    AsignarParametrosAtletismo(deportista as Atletismo);
+                    this.comando.CommandText = "UPDATE Atletismo SET nombre = @nombre, apellido = @apellido, edad = @edad, dni = @dni, aptoMedico = @aptoMedico, federado = @federado, genero = @genero, categoria = @categoria, disciplina = @disciplina WHERE id = @id";
+                }
 
                 int filasAfectadas = this.comando.ExecuteNonQuery();
                 if (filasAfectadas == 1)
                 {
+                    this.ActualizarListas();
                     retorno = true;
                 }
             }
