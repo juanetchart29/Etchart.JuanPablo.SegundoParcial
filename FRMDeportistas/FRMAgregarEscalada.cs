@@ -27,7 +27,7 @@ namespace FRMDeportistas
         /// Constructor de la clase FRMAgregarEscalada.
         /// </summary>
         /// <param name="clasificacion">Clasificación de deportistas.</param>
-        public FRMAgregarEscalada(Clasificacion clasificacion) : base(clasificacion)
+        public FRMAgregarEscalada(AccesoDatos clasificacion) : base(clasificacion)
         {
             InitializeComponent();
         }
@@ -81,13 +81,12 @@ namespace FRMDeportistas
             {
                 this.AsignarValores();
                 Escalada escalada = new Escalada(this.edad, this.nombre, this.apellido, this.dni, this.genero, this.aptoMedico, this.federado, this.categoria, this.grado, this.modalidad);
-                if (objetoModificar is not null)
-                {
-                    clasificacion -= objetoModificar;
-                    clasificacion.MandarDeportistas();
-                }
-                clasificacion += escalada;
-                clasificacion.MandarDeportistas();
+                //if (objetoModificar is not null)
+                //{
+                //    clasificacion -= objetoModificar;
+                //    clasificacion.MandarDeportistas();
+                //}
+                clasificacion.AgregarDato(escalada);
                 this.Close();
             }
         }

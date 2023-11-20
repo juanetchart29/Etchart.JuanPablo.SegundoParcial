@@ -1,6 +1,5 @@
 using Entidades;
 using System.Text;
-
 namespace FRMDeportistas
 {
     /// <summary>
@@ -18,13 +17,12 @@ namespace FRMDeportistas
         /// <summary>
         /// Clasificación de deportistas.
         /// </summary>
-        public Clasificacion clasificacion;
 
         /// <summary>
         /// Ruta del archivo de deportistas.
         /// </summary>
         public string path;
-
+        public AccesoDatos clasificacion;
         #endregion
 
         /// <summary>
@@ -32,8 +30,8 @@ namespace FRMDeportistas
         /// </summary>
         public FRMMenuPrincipal()
         {
-            path = "Deportistas.json";
             InitializeComponent();
+            path = "Deportistas.json";
             AbrirFormularioHijo(new AgregarPorDeporte(this.clasificacion), this.btnAgregar.Text);
         }
 
@@ -113,7 +111,6 @@ namespace FRMDeportistas
         private void btnVerClasificacion_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            this.clasificacion = Clasificacion.TraerDeportistas(this.path);
             AbrirFormularioHijo(new FRMVerClasificacion(this.clasificacion), btn.Text);
         }
 

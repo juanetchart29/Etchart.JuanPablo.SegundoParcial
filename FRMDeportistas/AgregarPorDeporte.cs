@@ -19,7 +19,7 @@ namespace FRMDeportistas
         #region Atributos
 
         public Form formActivo;
-        public Clasificacion clasificacion;
+        public AccesoDatos clasificacion;
 
         #endregion
 
@@ -35,7 +35,7 @@ namespace FRMDeportistas
         /// Constructor de la clase AgregarPorDeporte.
         /// </summary>
         /// <param name="clasificacion">La instancia de Clasificacion utilizada para gestionar deportistas.</param>
-        public AgregarPorDeporte(Clasificacion clasificacion)
+        public AgregarPorDeporte(AccesoDatos clasificacion)
         {
             InitializeComponent();
             this.clasificacion = clasificacion;

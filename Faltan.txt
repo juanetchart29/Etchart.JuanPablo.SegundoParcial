@@ -4,3 +4,5 @@ OPCIONAL:
 -separar todo en Region y EndRegion
 
 
+---------cambios de base de datos para el crud------
+tengo que ver en el boton siguiente cambiar la logica para modificar un objeto 

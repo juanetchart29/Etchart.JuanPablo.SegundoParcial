@@ -29,7 +29,7 @@ namespace FRMDeportistas
         /// Constructor de la clase FRMAgregarAtletismo.
         /// </summary>
         /// <param name="clasificacion">Clasificación de deportistas.</param>
-        public FRMAgregarAtletismo(Clasificacion clasificacion) : base(clasificacion)
+        public FRMAgregarAtletismo(AccesoDatos clasificacion) : base(clasificacion)
         {
             InitializeComponent();
         }
@@ -39,7 +39,7 @@ namespace FRMDeportistas
         /// </summary>
         /// <param name="clasificacion">Clasificación de deportistas.</param>
         /// <param name="atletismo">Deportista de atletismo a modificar.</param>
-        public FRMAgregarAtletismo(Clasificacion clasificacion, Atletismo atletismo) : this(clasificacion)
+        public FRMAgregarAtletismo(AccesoDatos clasificacion, Atletismo atletismo) : this(clasificacion)
         {
             objetoModificar = atletismo;
             base.setearBasics(atletismo);
@@ -80,13 +80,12 @@ namespace FRMDeportistas
             {
                 this.AsignarValores();
                 Atletismo atletismo = new Atletismo(this.edad, this.nombre, this.apellido, this.dni, this.genero, this.aptoMedico, this.federado, this.disciplina, this.Categoria);
-                if (objetoModificar is not null)
-                {
-                    clasificacion -= objetoModificar;
-                    clasificacion.MandarDeportistas();
-                }
-                clasificacion += atletismo;
-                clasificacion.MandarDeportistas(base.path);
+                //if (objetoModificar is not null)
+                //{
+                //    clasificacion -= objetoModificar;
+                //    clasificacion.MandarDeportistas();
+                //}
+                clasificacion.AgregarDato(atletismo);
                 this.Close();
             }
         }

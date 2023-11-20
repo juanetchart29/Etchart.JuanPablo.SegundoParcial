@@ -33,7 +33,7 @@ namespace FRMDeportistas
         /// Constructor de la clase FRMAgregarVoley.
         /// </summary>
         /// <param name="clasificacion">Clasificación de deportistas.</param>
-        public FRMAgregarVoley(Clasificacion clasificacion) : base(clasificacion)
+        public FRMAgregarVoley(AccesoDatos clasificacion) : base(clasificacion)
         {
             InitializeComponent();
         }
@@ -90,13 +90,12 @@ namespace FRMDeportistas
             {
                 this.AsignarValores();
                 Voley voley = new Voley(this.edad, this.nombre, this.apellido, this.dni, this.genero, this.aptoMedico, this.federado, this.partidosJugados, this.altura, this.posicion, this.categoria);
-                if (objetoModificar is not null)
-                {
-                    clasificacion -= objetoModificar;
-                    clasificacion.MandarDeportistas();
-                }
-                clasificacion += voley;
-                clasificacion.MandarDeportistas();
+                //if (objetoModificar is not null)
+                //{
+                //    clasificacion -= objetoModificar;
+                //    clasificacion.MandarDeportistas();
+                //}
+                clasificacion.AgregarDato(voley);
                 this.Close();
             }
         }

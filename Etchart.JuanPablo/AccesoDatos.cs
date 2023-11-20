@@ -10,12 +10,16 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class AccesoDatos
+    public class AccesoDatos
     {
         public SqlCommand comando;//con este objeto realizo las querys
         private SqlConnection conexion;// se encarga de conectarse con el motor de la base de datos
         private static string cadena_conexion;
         private SqlDataReader lector;//contiende lo que me devuelve la consulta sql
+        public List<Escalada> listaEscalada;
+        public List<Voley> listaVoley;
+        public List<Atletismo> listaAtletismo;
+        
         static AccesoDatos()
         {
             //seteo mi cadena de conexion
@@ -24,6 +28,10 @@ namespace Entidades
         public AccesoDatos()
         {
             conexion = new SqlConnection(AccesoDatos.cadena_conexion);
+            this.listaEscalada = this.TraerDatos<Escalada>();
+            this.listaVoley = this.TraerDatos<Voley>();
+            this.listaAtletismo = this.TraerDatos<Atletismo>();
+
         }
 
 
@@ -77,6 +85,8 @@ namespace Entidades
             this.comando.Parameters.AddWithValue("@categoria", deportista.Categoria);
             this.comando.Parameters.AddWithValue("@disciplina", deportista.Disciplina);
         }
+
+
         public List<T> TraerDatos<T>() where T : Deportista, new()
         {
             List<T> lista = new List<T>();
@@ -91,18 +101,19 @@ namespace Entidades
             {
                 case "Escalada":
 
-                    Escalada escalada = new Escalada();
+                    this.comando.CommandText = "SELECT * from Escalada";
                     break;
                 case "Voley":
                     Voley voley= new Voley();
+                    this.comando.CommandText = "SELECT * from Voley";
                     break;
                 case "Atletismo":
                     Atletismo atletismo = new Atletismo();
+                    this.comando.CommandText = "SELECT * from Atletismo";
                     break;
             }
             try
             {
-                this.comando.CommandText = "";
                 this.comando.Connection = this.conexion;
 
                 this.conexion.Open();
@@ -111,12 +122,22 @@ namespace Entidades
 
                 while (lector.Read()) //siempre que tengascosas para leer
                 {
-                    Deportista deportista = new Deportista();
-                    deportista.Nombre = (string)this.lector["nombre"];
-                    deportista.Nombre = this.lector[1].ToString();
+                    T deportista = new T();
+                    this.AsignarAtributosDeportista(deportista as Deportista);
 
-                    deportista.Dni = this.lector.GetFloat(3);
-
+                    if (tipoDeDato == "Escalada")
+                    {
+                        this.AsignarAtributosEscalada(deportista as Escalada);
+                    }
+                    else if (tipoDeDato == "Voley")
+                    {
+                        this.AsignarAtributosVoley(deportista as Voley);
+                    }
+                    else if (tipoDeDato == "Atletismo")
+                    {
+                        this.AsignarAtributosAtletismo(deportista as Atletismo);
+                    }
+                    lista.Add(deportista);
                 }
                 this.lector.Close();
             }
@@ -125,12 +146,38 @@ namespace Entidades
             
             }
 
-
-
-
-
-
             return lista;
+        }
+        public void AsignarAtributosEscalada(Escalada deportista)
+        {
+            deportista.Grado = (string)this.lector["grado"];
+            deportista.Modalidad = (string)this.lector["modalidad"];
+            deportista.Categoria = (string)this.lector["categoria"];
+        }
+        public void AsignarAtributosAtletismo(Atletismo deportista) 
+        {
+            deportista.Categoria = (string)this.lector["categoria"];
+            deportista.Disciplina = (string)this.lector["disciplina"];
+
+        }
+        public void AsignarAtributosVoley(Voley deportista)
+        {
+            deportista.Posicion = (string)this.lector["posicion"];
+            deportista.Altura = (float)this.lector.GetFloat(9);
+            deportista.PartidosJugados = (int)this.lector.GetInt32(10);
+            deportista.Categoria = (string)this.lector["categoria"];
+        }
+        public void AsignarAtributosDeportista(Deportista deportista)
+        {
+            deportista.id = this.lector.GetInt32(0);
+
+            deportista.Nombre = (string)this.lector["nombre"];
+            deportista.Apellido = (string)this.lector["apellido"];
+            deportista.Edad = this.lector.GetInt32(3);
+            deportista.Dni = (string)this.lector["dni"];
+            deportista.Genero = (string)this.lector["genero"];
+            deportista.AptoMedico = (bool)this.lector.GetBoolean(6);
+            deportista.Federado = (bool)this.lector.GetBoolean(7);
         }
         public bool AgregarDato(Deportista deportista)
         {
@@ -139,7 +186,28 @@ namespace Entidades
             {
                 this.comando = new SqlCommand();
                 this.comando.CommandType = System.Data.CommandType.Text;
-                this.comando.CommandText = "insert into deportista(cadena,entero,flotante) values('" + deportista.Nombre + "')" ;//las casdenas van entre comillas simples si o si
+                AsignarParametrosDeportista(deportista);
+                if (deportista is Escalada)
+                {
+                    AsignarParametrosEscalada((Escalada)deportista);
+                    this.listaEscalada.Add((Escalada)deportista);
+                    this.comando.CommandText = "INSERT into Escalada (nombre,apellido,edad,dni,aptoMedico,federado,genero,grado,categoria,modalidad) " +
+                        "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@grado,@categoria,@modalidad)";
+                }
+                else if (deportista is Voley) 
+                {
+                    AsignarParametrosVoley((Voley)deportista);
+                    this.listaVoley.Add((Voley)deportista);
+                    this.comando.CommandText = "INSERT into Escalada (nombre,apellido,edad,dni,aptoMedico,federado,genero,posicion,altura,partidosJugados,categoria) " +
+                     "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@posicion,@altura,@partidosJugados,@categoria)";
+                }
+                else if (deportista is Atletismo)
+                {
+                    AsignarParametrosAtletismo((Atletismo)deportista);
+                    this.listaAtletismo.Add((Atletismo)deportista);
+                    this.comando.CommandText = "INSERT into Escalada (nombre,apellido,edad,dni,aptoMedico,federado,genero,categoria,disciplina) " +
+                    "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@categoria,@disciplina)";
+                }
 
                 this.comando.Connection = this.conexion;
                 
@@ -171,7 +239,7 @@ namespace Entidades
                 this.comando = new SqlCommand();
                 this.comando.Parameters.AddWithValue("@cadena", deportista.Nombre);
                 this.comando.CommandType = System.Data.CommandType.Text;
-                this.comando.CommandText = "update dato set cadena = @cadena , entero = @entero where id = @id" 
+                this.comando.CommandText = "update dato set cadena = @cadena , entero = @entero where id = @id";
                 this.comando.Connection = this.conexion;
 
                 int filasAfectadas = this.comando.ExecuteNonQuery();

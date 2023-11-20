@@ -27,7 +27,7 @@ namespace FRMDeportistas
 
         protected string path = "Deportistas.json";
 
-        public Clasificacion clasificacion;
+        public AccesoDatos clasificacion;
         #endregion
 
         #region Constructores
@@ -44,7 +44,7 @@ namespace FRMDeportistas
         /// Constructor de la clase FRMAgragarDeportista con Clasificacion.
         /// </summary>
         /// <param name="clasificacion">La instancia de Clasificacion utilizada para gestionar deportistas.</param>
-        public FRMAgragarDeportista(Clasificacion clasificacion) : this()
+        public FRMAgragarDeportista(AccesoDatos clasificacion) : this()
         {
             this.clasificacion = clasificacion;
         }
@@ -96,7 +96,7 @@ namespace FRMDeportistas
             else
             {
                 this.rbFederado.Checked = true;
-                this rbNoFederado.Checked = false;
+                this.rbNoFederado.Checked = false;
             }
         }
 
