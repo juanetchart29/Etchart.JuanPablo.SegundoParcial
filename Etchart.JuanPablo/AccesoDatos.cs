@@ -3,6 +3,7 @@ using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -28,6 +29,10 @@ namespace Entidades
         public AccesoDatos()
         {
             conexion = new SqlConnection(AccesoDatos.cadena_conexion);
+            this.listaEscalada = new List<Escalada>();
+            this.listaAtletismo = new List<Atletismo>();
+            this.listaVoley = new List<Voley>();
+
             this.listaEscalada = this.TraerDatos<Escalada>();
             this.listaVoley = this.TraerDatos<Voley>();
             this.listaAtletismo = this.TraerDatos<Atletismo>();
@@ -145,6 +150,13 @@ namespace Entidades
             {
             
             }
+            finally 
+            {
+                if (this.conexion.State == System.Data.ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
 
             return lista;
         }
@@ -163,7 +175,9 @@ namespace Entidades
         public void AsignarAtributosVoley(Voley deportista)
         {
             deportista.Posicion = (string)this.lector["posicion"];
-            deportista.Altura = (float)this.lector.GetFloat(9);
+     
+            deportista.Altura = (float)this.lector.GetDouble(9);
+
             deportista.PartidosJugados = (int)this.lector.GetInt32(10);
             deportista.Categoria = (string)this.lector["categoria"];
         }
@@ -184,6 +198,8 @@ namespace Entidades
             bool retorno = false;
             try
             {
+
+                this.conexion.Open();
                 this.comando = new SqlCommand();
                 this.comando.CommandType = System.Data.CommandType.Text;
                 AsignarParametrosDeportista(deportista);
@@ -192,20 +208,20 @@ namespace Entidades
                     AsignarParametrosEscalada((Escalada)deportista);
                     this.listaEscalada.Add((Escalada)deportista);
                     this.comando.CommandText = "INSERT into Escalada (nombre,apellido,edad,dni,aptoMedico,federado,genero,grado,categoria,modalidad) " +
-                        "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@grado,@categoria,@modalidad)";
+                    "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@grado,@categoria,@modalidad)";
                 }
                 else if (deportista is Voley) 
                 {
                     AsignarParametrosVoley((Voley)deportista);
                     this.listaVoley.Add((Voley)deportista);
-                    this.comando.CommandText = "INSERT into Escalada (nombre,apellido,edad,dni,aptoMedico,federado,genero,posicion,altura,partidosJugados,categoria) " +
-                     "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@posicion,@altura,@partidosJugados,@categoria)";
+                    this.comando.CommandText = "INSERT into Voley (nombre,apellido,edad,dni,aptoMedico,federado,genero,posicion,altura,partidosJugados,categoria) " +
+                    "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@posicion,@altura,@partidosJugados,@categoria)";
                 }
                 else if (deportista is Atletismo)
                 {
                     AsignarParametrosAtletismo((Atletismo)deportista);
                     this.listaAtletismo.Add((Atletismo)deportista);
-                    this.comando.CommandText = "INSERT into Escalada (nombre,apellido,edad,dni,aptoMedico,federado,genero,categoria,disciplina) " +
+                    this.comando.CommandText = "INSERT into Atletismo (nombre,apellido,edad,dni,aptoMedico,federado,genero,categoria,disciplina) " +
                     "VALUES (@nombre, @apellido, @edad, @dni, @aptoMedico, @federado, @genero,@categoria,@disciplina)";
                 }
 
@@ -217,7 +233,7 @@ namespace Entidades
                     retorno = true;
                 }
             }
-            catch
+            catch   ( Exception e )
             {
                 // Handle exceptions if needed
             }

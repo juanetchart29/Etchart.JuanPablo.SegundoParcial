@@ -21,13 +21,13 @@ namespace FRMDeportistas
         private Form formActivo = null;
         public List<Deportista> baseDatos;
 
-        public Clasificacion clasificacion;
+        public AccesoDatos clasificacion;
 
         /// <summary>
         /// Constructor de la clase FRMVerClasificacion.
         /// </summary>
         /// <param name="clasificacion">Objeto Clasificacion que contiene la lista de deportistas.</param>
-        public FRMVerClasificacion(Clasificacion clasificacion)
+        public FRMVerClasificacion(AccesoDatos clasificacion)
         {
             InitializeComponent();
             this.clasificacion = clasificacion;
@@ -41,6 +41,7 @@ namespace FRMDeportistas
         private void btnEscalada_Click(object sender, EventArgs e)
         {
             this.dataGrid.DataSource = null; // Limpia el DataGridView
+            MessageBox.Show(clasificacion.ToString());
             this.dataGrid.DataSource = clasificacion.listaEscalada;
             this.ultimoBotonPresionado = ETipoDeDeportista.Escalada.ToString();
         }
@@ -52,6 +53,7 @@ namespace FRMDeportistas
         private void btnAtletismo_Click(object sender, EventArgs e)
         {
             this.dataGrid.DataSource = null; // Limpia el DataGridView
+            MessageBox.Show(clasificacion.ToString());
             this.dataGrid.DataSource = clasificacion.listaAtletismo;
             this.ultimoBotonPresionado = ETipoDeDeportista.Atletismo.ToString();
         }
@@ -63,6 +65,7 @@ namespace FRMDeportistas
         private void btnVoley_Click(object sender, EventArgs e)
         {
             this.dataGrid.DataSource = null; // Limpia el DataGridView
+            MessageBox.Show(clasificacion.ToString());
             this.dataGrid.DataSource = clasificacion.listaVoley;
             this.ultimoBotonPresionado = ETipoDeDeportista.Voley.ToString();
         }
@@ -78,8 +81,8 @@ namespace FRMDeportistas
                 int indiceSeleccionado = dataGrid.SelectedRows[0].Index;
                 Deportista deportistaSeleccionado = (Deportista)dataGrid.Rows[indiceSeleccionado].DataBoundItem;
 
-                clasificacion -= deportistaSeleccionado;
-                clasificacion.MandarDeportistas();
+                //clasificacion -= deportistaSeleccionado;
+                //clasificacion.MandarDeportistas();
 
                 this.dataGrid.DataSource = null; // Limpia el DataGridView
                 this.TipoDeObjeto(deportistaSeleccionado); // Establece la nueva base de datos
@@ -212,7 +215,7 @@ namespace FRMDeportistas
                     {
                         listaOrdenada = lista.OrderBy(dep => dep.Edad).ToList();
                     }
-                    else if (this comboBoxOrden.Text == "Descendente")
+                    else if (this.comboBoxOrden.Text == "Descendente")
                     {
                         listaOrdenada = lista.OrderByDescending(dep => dep.Edad).ToList();
                     }

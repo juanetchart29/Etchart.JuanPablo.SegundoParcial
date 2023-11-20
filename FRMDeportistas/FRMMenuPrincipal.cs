@@ -122,7 +122,7 @@ namespace FRMDeportistas
         /// <param name="e">Los argumentos del evento.</param>
         private void FRMMenuPrincipal_Load(object sender, EventArgs e)
         {
-            this.clasificacion = Clasificacion.TraerDeportistas(this.path);
+            this.clasificacion = new AccesoDatos();
         }
 
         /// <summary>

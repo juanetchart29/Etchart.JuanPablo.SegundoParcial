@@ -85,7 +85,8 @@ namespace FRMDeportistas
                 //    clasificacion -= objetoModificar;
                 //    clasificacion.MandarDeportistas();
                 //}
-                clasificacion.AgregarDato(atletismo);
+                ok = clasificacion.AgregarDato(atletismo);
+                MessageBox.Show(ok.ToString());
                 this.Close();
             }
         }

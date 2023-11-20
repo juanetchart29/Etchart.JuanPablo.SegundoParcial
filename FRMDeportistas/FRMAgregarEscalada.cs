@@ -37,7 +37,7 @@ namespace FRMDeportistas
         /// </summary>
         /// <param name="clasificacion">Clasificación de deportistas.</param>
         /// <param name="escalada">Deportista de escalada a modificar.</param>
-        public FRMAgregarEscalada(Clasificacion clasificacion, Escalada escalada) : this(clasificacion)
+        public FRMAgregarEscalada(AccesoDatos clasificacion, Escalada escalada) : this(clasificacion)
         {
             objetoModificar = escalada;
             base.setearBasics(escalada);
@@ -86,7 +86,9 @@ namespace FRMDeportistas
                 //    clasificacion -= objetoModificar;
                 //    clasificacion.MandarDeportistas();
                 //}
-                clasificacion.AgregarDato(escalada);
+                ok = clasificacion.AgregarDato(escalada);
+                MessageBox.Show(ok.ToString());
+
                 this.Close();
             }
         }

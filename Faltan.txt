@@ -6,3 +6,8 @@ OPCIONAL:
 
 ---------cambios de base de datos para el crud------
 tengo que ver en el boton siguiente cambiar la logica para modificar un objeto 
+chequear como se elimina un objeto, hacer la funcion en AccesoDatos y llamarla en frmclasificacion
+-no se agregan los de ateltismo a la base de deatos
+-crear funcion par actualiza las listas 
+
+enascender y desdecender tengo que actualizar la base de datos :(

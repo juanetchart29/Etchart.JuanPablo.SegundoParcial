@@ -35,6 +35,7 @@ namespace FRMDeportistas
         /// <param name="clasificacion">Clasificación de deportistas.</param>
         public FRMAgregarVoley(AccesoDatos clasificacion) : base(clasificacion)
         {
+            this.clasificacion = clasificacion;
             InitializeComponent();
         }
 
@@ -43,7 +44,7 @@ namespace FRMDeportistas
         /// </summary>
         /// <param name="clasificacion">Clasificación de deportistas.</param>
         /// <param name="voley">Deportista de vóley a modificar.</param>
-        public FRMAgregarVoley(Clasificacion clasificacion, Voley voley) : this(clasificacion)
+        public FRMAgregarVoley(AccesoDatos clasificacion, Voley voley) : this(clasificacion)
         {
             objetoModificar = voley;
             base.setearBasics(voley);
@@ -95,7 +96,9 @@ namespace FRMDeportistas
                 //    clasificacion -= objetoModificar;
                 //    clasificacion.MandarDeportistas();
                 //}
-                clasificacion.AgregarDato(voley);
+                ok = clasificacion.AgregarDato(voley);
+                MessageBox.Show(ok.ToString());
+
                 this.Close();
             }
         }

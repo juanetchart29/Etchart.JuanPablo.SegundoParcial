@@ -10,3 +10,17 @@ C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart
 C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.pdb
 C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\obj\Debug\net6.0\ref\Entidades.dll
 C:\Users\Juan Pablo Etchart\source\repos\Etchart.JuanPablo.PrimerParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.csproj.AssemblyReference.cache
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\bin\Debug\net6.0\Entidades.deps.json
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\bin\Debug\net6.0\Entidades.dll
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\bin\Debug\net6.0\Entidades.pdb
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.csproj.AssemblyReference.cache
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.Properties.Resources.resources
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.csproj.GenerateResource.cache
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.AssemblyInfo.cs
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.dll
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\refint\Entidades.dll
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.pdb
+C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\ref\Entidades.dll
