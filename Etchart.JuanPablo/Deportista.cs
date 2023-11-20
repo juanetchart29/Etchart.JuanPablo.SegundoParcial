@@ -7,6 +7,7 @@ namespace Etchart.JuanPablo
     /// </summary>
     public abstract class Deportista
     {
+        public int id;
         private string nombre;
         private string apellido;
         private int edad;

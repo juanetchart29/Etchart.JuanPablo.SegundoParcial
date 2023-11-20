@@ -92,7 +92,7 @@ namespace Entidades
                     Escalada escalada = new Escalada();
                     this.AsignarParametrosDeportista(escalada);
                     this.AsignarParametrosEscalada(escalada);
-                    this.comando.CommandText = "select id "
+                    this.comando.CommandText = "select id ";
                     break;
                 case "Voley":
                     Voley voley= new Voley();
