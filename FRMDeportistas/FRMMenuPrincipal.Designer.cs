@@ -31,6 +31,7 @@
             panel1 = new Panel();
             panelWinHijo = new Panel();
             panel4 = new Panel();
+            lblReloj = new Label();
             lblPanelWinHijo = new Label();
             panelSideBar = new Panel();
             lblHoraIngreso = new Label();
@@ -65,12 +66,24 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(51, 51, 71);
+            panel4.Controls.Add(lblReloj);
             panel4.Controls.Add(lblPanelWinHijo);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(200, 0);
             panel4.Name = "panel4";
             panel4.Size = new Size(952, 100);
             panel4.TabIndex = 0;
+            // 
+            // lblReloj
+            // 
+            lblReloj.AutoSize = true;
+            lblReloj.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblReloj.ForeColor = SystemColors.ButtonFace;
+            lblReloj.Location = new Point(836, 39);
+            lblReloj.Name = "lblReloj";
+            lblReloj.Size = new Size(65, 25);
+            lblReloj.TabIndex = 1;
+            lblReloj.Text = "label1";
             // 
             // lblPanelWinHijo
             // 
@@ -188,5 +201,6 @@
         private Button btnVerIngresos;
         private Label lblHoraIngreso;
         private Label lblNombreUsuario;
+        private Label lblReloj;
     }
 }

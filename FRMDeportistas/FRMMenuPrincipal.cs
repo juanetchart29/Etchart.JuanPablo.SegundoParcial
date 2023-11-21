@@ -13,6 +13,9 @@ namespace FRMDeportistas
 
         #region Atributos
 
+        private Reloj clock;
+
+
         /// <summary>
         /// Formulario hijo activo en el momento.
         /// </summary>
@@ -40,18 +43,28 @@ namespace FRMDeportistas
         {
             InitializeComponent();
             this.clasificacion = new AccesoDatos();
+            this.clock = new Reloj();
             path = "Deportistas.json";
-            clasificacion.EventoError += AccesoDatos_Error;
-            clasificacion.EventoOkey += AccesoDatos_Okey;
+            clasificacion.EventoError += this.AccesoDatos_Error;
+            clasificacion.EventoOkey += this.AccesoDatos_Okey;
+
+            clock.SegundoCambiado += this.Reloj_corriendo;
+
             AbrirFormularioHijo(new AgregarPorDeporte(this.clasificacion), this.btnAgregar.Text);
-            
+
 
         }
+
+        private void Reloj_corriendo(object sender, RelojEventArgs e)
+        {
+            this.lblReloj.Text = e.horaActual.ToString("HH:mm:ss");
+        }
+
 
         private void AccesoDatos_Error(object sender, DbEventArgs mensaje)
         {
             MessageBox.Show(mensaje.mensajeError);
-        }      
+        }
         private void AccesoDatos_Okey(object sender, DbEventArgs mensaje)
         {
             MessageBox.Show(mensaje.mensajeOkey);
@@ -146,7 +159,7 @@ namespace FRMDeportistas
         private void btnVerClasificacion_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            AbrirFormularioHijo(new FRMVerClasificacion(this.clasificacion,this.usuarioActual), btn.Text);
+            AbrirFormularioHijo(new FRMVerClasificacion(this.clasificacion, this.usuarioActual), btn.Text);
         }
 
         /// <summary>
@@ -157,7 +170,7 @@ namespace FRMDeportistas
         /// <param name="e">Los argumentos del evento.</param>
         private void FRMMenuPrincipal_Load(object sender, EventArgs e)
         {
-            
+            clock.IniciarRelojAsync(CancellationToken.None);
         }
 
         /// <summary>
@@ -168,12 +181,14 @@ namespace FRMDeportistas
         /// <param name="e">Los argumentos del evento.</param>
         private void FRMMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
+
             DialogResult resultado = MessageBox.Show("¿Está seguro que desea salir?", "Salir", MessageBoxButtons.YesNo);
 
             if (resultado == DialogResult.No)
             {
                 e.Cancel = true; // Cancelar el cierre del formulario
             }
+            clock.DetenerReloj();
         }
 
         /// <summary>
@@ -204,5 +219,7 @@ namespace FRMDeportistas
             Button btn = (Button)sender;
             this.AbrirFormularioHijo(new FRMIngresos(), btn.Text);
         }
+
+
     }
 }
