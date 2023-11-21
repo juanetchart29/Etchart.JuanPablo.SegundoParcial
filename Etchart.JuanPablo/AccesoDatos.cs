@@ -11,8 +11,12 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    public delegate void DelegadoError(object sender, MiExcepcionDB e);
+
     public class AccesoDatos
     {
+        public event DelegadoError EventoError;
+
         public SqlCommand comando;//con este objeto realizo las querys
         private SqlConnection conexion;// se encarga de conectarse con el motor de la base de datos
         private static string cadena_conexion;
@@ -42,6 +46,11 @@ namespace Entidades
             this.listaEscalada = this.TraerDatos<Escalada>();
             this.listaVoley = this.TraerDatos<Voley>();
             this.listaAtletismo = this.TraerDatos<Atletismo>();
+        }
+
+        public virtual void ErrorOcurrido(MiExcepcionDB e)
+        {
+            EventoError?.Invoke(this, e);
         }
 
         public bool pruebaConexion()
@@ -245,8 +254,9 @@ namespace Entidades
             }
             catch (Exception ex) 
             {
-            
+                this.ErrorOcurrido(new MiExcepcionDB(ex.ToString()));
             }
+
             finally 
             {
                 if (this.conexion.State == System.Data.ConnectionState.Open)

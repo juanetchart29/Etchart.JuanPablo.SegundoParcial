@@ -8,14 +8,20 @@ agregarle el id a mi constructor
 ---------cambios de base de datos para el crud------
 cuando asciendo a un escalador que esta en mayores se elimina toda la lista:/ local
 
+
 ---------manejar errores con delegados y eventos----
 lanzar carteles de aviso de que no puede subirse la categoria o no puede bajar la categoria 
 
 
------Hacer que segun el tipo de persona puedea hacer tantas cosa-----
 
-hacer en el contructor que segun el nivel de permisos, esconderle los botones para que no pueda presionarlos 
-
-
+Implementar:
+-Interfaces
+-Unit Testing
+-Task
+-Manejo de Excepciones
+-Delegados
+-eventos
+-Sql							LISTO
+-Generics						LISTO	
 
 -----chequear el diagrama de clasees

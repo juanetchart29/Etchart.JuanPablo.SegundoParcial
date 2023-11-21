@@ -41,13 +41,9 @@ namespace FRMDeportistas
         {
             if(usuarioActual.Perfil == "vendedor") 
             {
-
-                MessageBox.Show("Entro");
                 this.btnEliminar.Visible = false;
             }
-            else
-            {
-            }
+
         }
 
 
