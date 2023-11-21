@@ -13,18 +13,22 @@ namespace FRMDeportistas
         public FRMLogin()
         {
             InitializeComponent();
+            this.usuarios = ArchivoUsuarios.TraerUsuarios();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.usuarios = ArchivoUsuarios.TraerUsuarios();
             this.correo = txtboxEmail.Text;
             this.contraseña = txtBoxContraseña.Text;
+            
 
+        }
+
+        public Usuario UsuarioCorrecto()
+        {
             if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(contraseña))
             {
-                MessageBox.Show("Por favor, ingrese correo y contraseña.");
-                return;
+                throw new ArgumentNullException();
             }
 
 
@@ -35,18 +39,12 @@ namespace FRMDeportistas
                 {
                     this.usuarioActual = item;
                     ArchivoUsuarios.Registrar(this.usuarioActual);
-                    LanzarForm();
-
-                    break;
+                    return item;
                 }
             }
-            if (this.usuarioActual == null)
-            {
-                MessageBox.Show("Correo o contraseña incorrectos.");// si llega hasta aca es que no se logeo
-
-            }
-            else { this.Close(); }
+            return null;
         }
+
 
         private void checkContraseña_CheckedChanged(object sender, EventArgs e)
         {

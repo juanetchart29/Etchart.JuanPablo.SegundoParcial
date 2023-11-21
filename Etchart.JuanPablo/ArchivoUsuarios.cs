@@ -13,10 +13,12 @@ namespace Entidades
         private static string pathLog;
         private static string pathUsuarios;
 
+        public static List<Usuario> usuarios;
         static ArchivoUsuarios()
         {
             PathLog = "Registro.log";
             PathUsuarios = "Usuarios.json";
+            ArchivoUsuarios.usuarios = ArchivoUsuarios.TraerUsuarios();
         }
 
         /// <summary>
@@ -52,10 +54,33 @@ namespace Entidades
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción que pueda ocurrir durante el registro.
-                Console.WriteLine("Error al registrar el usuario: " + ex.Message);
+
             }
         }
+
+        public static Usuario LogearUsuario(string mail,string contraseña)
+        {
+            if (string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(contraseña))
+            {
+                throw new ArgumentNullException();
+            }
+
+
+            foreach (Usuario item in ArchivoUsuarios.usuarios)
+            {
+
+                if (contraseña == item.Clave && mail == item.Correo)
+                {
+                    ArchivoUsuarios.Registrar(item);
+                    return item;
+                }
+            }
+            return null;
+        }
+    
+
+
+
 
         /// <summary>
         /// Obtiene la lista de registros del archivo de registro.

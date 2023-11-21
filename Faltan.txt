@@ -20,10 +20,10 @@ me tira error de no se puede agregar a ErrorOcurrido porque es grupo de metodos 
 Implementar:
 -Interfaces
 -Unit Testing
--Task
 -Manejo de Excepciones
--Delegados
--eventos
+-Task							MEDIAS
+-Delegados						LISTO
+-eventos						LISTO
 -Sql							LISTO
 -Generics						LISTO	
 
