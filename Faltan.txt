@@ -10,7 +10,10 @@ cuando asciendo a un escalador que esta en mayores se elimina toda la lista:/ lo
 
 
 ---------manejar errores con delegados y eventos----
-lanzar carteles de aviso de que no puede subirse la categoria o no puede bajar la categoria 
+me tira error de no se puede agregar a ErrorOcurrido porque es grupo de metodos puedo preguntar en la clase.:)mañana
+
+---------Realizar unnit test par chequear que todos los campos se completaron correctamente ;)
+
 
 
 

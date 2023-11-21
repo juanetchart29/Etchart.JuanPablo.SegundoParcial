@@ -40,9 +40,20 @@ namespace FRMDeportistas
         {
             InitializeComponent();
             path = "Deportistas.json";
+            
+            this.clasificacion = new AccesoDatos();
+            clasificacion.ErrorOcurrido += AccesoDatos_ErrorOcurrido;
             AbrirFormularioHijo(new AgregarPorDeporte(this.clasificacion), this.btnAgregar.Text);
+            
 
         }
+
+        private void AccesoDatos_ErrorOcurrido(MiExcepcionDB dB)
+        {
+            
+        }
+
+
 
 
         /// <summary>
@@ -56,7 +67,6 @@ namespace FRMDeportistas
             this.lblHoraIngreso.Text = DateTime.Now.ToString();
             this.AplicarRestriccion(usuario);
         }
-
 
         public void AplicarRestriccion(Usuario usuario)
         {
@@ -143,7 +153,7 @@ namespace FRMDeportistas
         /// <param name="e">Los argumentos del evento.</param>
         private void FRMMenuPrincipal_Load(object sender, EventArgs e)
         {
-            this.clasificacion = new AccesoDatos();
+            
         }
 
         /// <summary>
