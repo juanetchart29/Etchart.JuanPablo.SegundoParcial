@@ -24,6 +24,3 @@ C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Et
 C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\refint\Entidades.dll
 C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.pdb
 C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\ref\Entidades.dll
-C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
-C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
-C:\Users\Juan Pablo Etchart\Desktop\Progra 2\Etchart.JuanPablo.SegundoParcial\Etchart.JuanPablo\obj\Debug\net6.0\Entidades.csproj.CopyComplete

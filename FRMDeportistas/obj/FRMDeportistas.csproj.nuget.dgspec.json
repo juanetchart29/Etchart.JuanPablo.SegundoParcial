@@ -45,17 +45,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "MSTest.TestFramework": {
-              "target": "Package",
-              "version": "[3.1.1, )"
-            },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[5.1.2, )"
-            },
-            "Microsoft.TestPlatform.ObjectModel": {
-              "target": "Package",
-              "version": "[17.8.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -130,10 +122,6 @@
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[5.1.2, )"
-            },
-            "Microsoft.TestPlatform.ObjectModel": {
-              "target": "Package",
-              "version": "[17.8.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

@@ -210,28 +210,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Microsoft.NET.Test.Sdk": {
-              "target": "Package",
-              "version": "[17.5.0, )"
-            },
-            "NUnit": {
-              "target": "Package",
-              "version": "[3.13.3, )"
-            },
-            "NUnit.Analyzers": {
-              "target": "Package",
-              "version": "[3.6.1, )"
-            },
-            "NUnit3TestAdapter": {
-              "target": "Package",
-              "version": "[4.4.2, )"
-            },
-            "coverlet.collector": {
-              "target": "Package",
-              "version": "[3.2.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -243,11 +221,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }

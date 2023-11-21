@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución",
 		Faltan.txt = Faltan.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestUsuarios", "UnitTestUsuarios\UnitTestUsuarios.csproj", "{1C97D61F-010E-4AF3-8360-073B9DFC4261}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyUnitTest", "MyUnitTest\MyUnitTest.csproj", "{ACDE7C16-BCAE-4EAD-9CD2-ADC68D21286E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,10 +28,10 @@ Global
 		{028A3574-A88E-47CD-85C3-9E29D8E4CC60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{028A3574-A88E-47CD-85C3-9E29D8E4CC60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{028A3574-A88E-47CD-85C3-9E29D8E4CC60}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C97D61F-010E-4AF3-8360-073B9DFC4261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C97D61F-010E-4AF3-8360-073B9DFC4261}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C97D61F-010E-4AF3-8360-073B9DFC4261}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C97D61F-010E-4AF3-8360-073B9DFC4261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACDE7C16-BCAE-4EAD-9CD2-ADC68D21286E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACDE7C16-BCAE-4EAD-9CD2-ADC68D21286E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACDE7C16-BCAE-4EAD-9CD2-ADC68D21286E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACDE7C16-BCAE-4EAD-9CD2-ADC68D21286E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

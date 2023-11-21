@@ -10,15 +10,13 @@ namespace Entidades
     /// </summary>
     public static class ArchivoUsuarios
     {
-        private static string pathLog;
-        private static string pathUsuarios;
+        private static string pathLog = "Registro.log";
+        private static string pathUsuarios = "Usuarios.json";
 
         public static List<Usuario> usuarios;
         static ArchivoUsuarios()
         {
-            PathLog = "Registro.log";
-            PathUsuarios = "Usuarios.json";
-            ArchivoUsuarios.usuarios = ArchivoUsuarios.TraerUsuarios();
+            ArchivoUsuarios.TraerUsuarios();
         }
 
         /// <summary>
@@ -62,7 +60,6 @@ namespace Entidades
         {
             if (string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(contraseña))
             {
-                throw new ArgumentNullException();
             }
 
 
