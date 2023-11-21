@@ -145,6 +145,8 @@ namespace Entidades
             bool retorno = false;
             try
             {
+                DbEventArgs e = new DbEventArgs();
+
                 this.conexion.Open();
 
                 this.comando = new SqlCommand();
@@ -175,12 +177,15 @@ namespace Entidades
                 this.comando.Connection = this.conexion;
                 
                 int filasAfectadas = this.comando.ExecuteNonQuery();
-                if(filasAfectadas == 1 ) 
+                if (filasAfectadas == 1)
                 {
-                    //una vez que se realizo la carga de mis datos actualizo par tener en mis listas locales el id
+                    EventoOkey?.Invoke(this, e);
                     this.ActualizarListas();
-
                     retorno = true;
+                }
+                else if (filasAfectadas == 0)
+                {
+                    EventoError?.Invoke(this, e);
                 }
             }
             catch   ( Exception e )
