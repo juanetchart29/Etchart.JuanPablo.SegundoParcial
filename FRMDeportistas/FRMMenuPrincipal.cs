@@ -7,6 +7,10 @@ namespace FRMDeportistas
     /// </summary>
     public partial class FRMMenuPrincipal : Form
     {
+
+
+
+
         #region Atributos
 
         /// <summary>
@@ -23,6 +27,10 @@ namespace FRMDeportistas
         /// </summary>
         public string path;
         public AccesoDatos clasificacion;
+
+        public Usuario usuarioActual;
+
+
         #endregion
 
         /// <summary>
@@ -33,16 +41,29 @@ namespace FRMDeportistas
             InitializeComponent();
             path = "Deportistas.json";
             AbrirFormularioHijo(new AgregarPorDeporte(this.clasificacion), this.btnAgregar.Text);
+
         }
+
 
         /// <summary>
         /// Constructor de la clase FRMMenuPrincipal con un nombre de usuario.
         /// </summary>
         /// <param name="nombreUsuario">Nombre del usuario que ha iniciado sesión.</param>
-        public FRMMenuPrincipal(string nombreUsuario) : this()
+        public FRMMenuPrincipal(Usuario usuario) : this()
         {
-            this.lblNombreUsuario.Text = nombreUsuario;
+            this.usuarioActual = usuario;
+            this.lblNombreUsuario.Text = usuario.Nombre;
             this.lblHoraIngreso.Text = DateTime.Now.ToString();
+            this.AplicarRestriccion(usuario);
+        }
+
+
+        public void AplicarRestriccion(Usuario usuario)
+        {
+            if (usuario.Perfil == "vendedor" || usuario.Perfil == "supervisor")
+            {
+                this.btnVerIngresos.Visible = false;
+            }
         }
 
         /// <summary>
@@ -111,7 +132,7 @@ namespace FRMDeportistas
         private void btnVerClasificacion_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            AbrirFormularioHijo(new FRMVerClasificacion(this.clasificacion), btn.Text);
+            AbrirFormularioHijo(new FRMVerClasificacion(this.clasificacion,this.usuarioActual), btn.Text);
         }
 
         /// <summary>

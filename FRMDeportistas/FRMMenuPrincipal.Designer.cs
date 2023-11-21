@@ -36,7 +36,6 @@
             lblHoraIngreso = new Label();
             lblNombreUsuario = new Label();
             btnVerIngresos = new Button();
-            btnSeleccionarJson = new Button();
             btnVerClasificacion = new Button();
             btnAgregar = new Button();
             panel1.SuspendLayout();
@@ -89,7 +88,6 @@
             panelSideBar.Controls.Add(lblHoraIngreso);
             panelSideBar.Controls.Add(lblNombreUsuario);
             panelSideBar.Controls.Add(btnVerIngresos);
-            panelSideBar.Controls.Add(btnSeleccionarJson);
             panelSideBar.Controls.Add(btnVerClasificacion);
             panelSideBar.Controls.Add(btnAgregar);
             panelSideBar.Dock = DockStyle.Left;
@@ -123,7 +121,7 @@
             btnVerIngresos.FlatAppearance.BorderSize = 0;
             btnVerIngresos.FlatStyle = FlatStyle.Flat;
             btnVerIngresos.ForeColor = Color.White;
-            btnVerIngresos.Location = new Point(0, 352);
+            btnVerIngresos.Location = new Point(3, 439);
             btnVerIngresos.Margin = new Padding(7, 3, 3, 3);
             btnVerIngresos.Name = "btnVerIngresos";
             btnVerIngresos.Size = new Size(197, 42);
@@ -132,26 +130,12 @@
             btnVerIngresos.UseVisualStyleBackColor = true;
             btnVerIngresos.Click += btnVerIngresos_Click;
             // 
-            // btnSeleccionarJson
-            // 
-            btnSeleccionarJson.FlatAppearance.BorderSize = 0;
-            btnSeleccionarJson.FlatStyle = FlatStyle.Flat;
-            btnSeleccionarJson.ForeColor = Color.White;
-            btnSeleccionarJson.Location = new Point(3, 435);
-            btnSeleccionarJson.Margin = new Padding(7, 3, 3, 3);
-            btnSeleccionarJson.Name = "btnSeleccionarJson";
-            btnSeleccionarJson.Size = new Size(197, 42);
-            btnSeleccionarJson.TabIndex = 2;
-            btnSeleccionarJson.Text = "SeleccionarJson";
-            btnSeleccionarJson.UseVisualStyleBackColor = true;
-            btnSeleccionarJson.Click += btnSeleccionarJson_Click;
-            // 
             // btnVerClasificacion
             // 
             btnVerClasificacion.FlatAppearance.BorderSize = 0;
             btnVerClasificacion.FlatStyle = FlatStyle.Flat;
             btnVerClasificacion.ForeColor = Color.White;
-            btnVerClasificacion.Location = new Point(0, 262);
+            btnVerClasificacion.Location = new Point(3, 301);
             btnVerClasificacion.Margin = new Padding(7, 3, 3, 3);
             btnVerClasificacion.Name = "btnVerClasificacion";
             btnVerClasificacion.Size = new Size(197, 42);
@@ -201,7 +185,6 @@
         private Button btnVerClasificacion;
         private Button btnAgregar;
         private Label lblPanelWinHijo;
-        private Button btnSeleccionarJson;
         private Button btnVerIngresos;
         private Label lblHoraIngreso;
         private Label lblNombreUsuario;

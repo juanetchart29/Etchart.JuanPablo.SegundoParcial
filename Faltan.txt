@@ -1,6 +1,6 @@
 EXTRA:
 agregarle el id a mi constructor
-OPCIONAL:
+
 
 -separar todo en Region y EndRegion
 
@@ -13,4 +13,9 @@ lanzar carteles de aviso de que no puede subirse la categoria o no puede bajar l
 
 
 -----Hacer que segun el tipo de persona puedea hacer tantas cosa-----
+
 hacer en el contructor que segun el nivel de permisos, esconderle los botones para que no pueda presionarlos 
+
+
+
+-----chequear el diagrama de clasees

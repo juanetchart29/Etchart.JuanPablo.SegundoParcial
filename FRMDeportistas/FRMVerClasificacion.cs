@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,19 +21,35 @@ namespace FRMDeportistas
         private string ultimoBotonPresionado;
         private Form formActivo = null;
         public List<Deportista> baseDatos;
-
+        private Usuario usuarioActual;
         public AccesoDatos clasificacion;
 
         /// <summary>
         /// Constructor de la clase FRMVerClasificacion.
         /// </summary>
         /// <param name="clasificacion">Objeto Clasificacion que contiene la lista de deportistas.</param>
-        public FRMVerClasificacion(AccesoDatos clasificacion)
+        public FRMVerClasificacion(AccesoDatos clasificacion,Usuario usuario)
         {
             InitializeComponent();
             this.clasificacion = clasificacion;
             this.baseDatos = null;
+            this.usuarioActual = usuario;
+            this.AplicarRestricciones(usuarioActual);
         }
+
+        private void AplicarRestricciones(Usuario usuario)
+        {
+            if(usuarioActual.Perfil == "vendedor") 
+            {
+
+                MessageBox.Show("Entro");
+                this.btnEliminar.Visible = false;
+            }
+            else
+            {
+            }
+        }
+
 
         /// <summary>
         /// Manejador de eventos para el botón "Escalada".

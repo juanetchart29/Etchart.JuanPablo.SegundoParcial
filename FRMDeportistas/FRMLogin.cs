@@ -76,7 +76,7 @@ namespace FRMDeportistas
         private void LanzarForm()
         {
 
-            FRMMenuPrincipal principal = new FRMMenuPrincipal(this.usuarioActual.Nombre);
+            FRMMenuPrincipal principal = new FRMMenuPrincipal(this.usuarioActual);
             this.Hide();
             principal.ShowDialog();
 
