@@ -105,17 +105,19 @@ namespace FRMDeportistas
         /// <param name="deportista">Deportista seleccionado para determinar el tipo de deporte.</param>
         private void TipoDeObjeto(Deportista deportista)
         {
+            clasificacion.ActualizarListas();
+
             if (deportista is Escalada)
             {
                 this.dataGrid.DataSource = clasificacion.listaEscalada;
             }
             else if (deportista is Atletismo)
             {
-                this.dataGrid.DataSource = clasificacion.listaAtletismo;
+                MessageBox.Show(clasificacion.listaAtletismo.Count.ToString());
             }
             else if (deportista is Voley)
             {
-                this.dataGrid.DataSource = clasificacion.listaVoley;
+                MessageBox.Show(clasificacion.listaVoley.Count.ToString());
             }
         }
 
@@ -166,9 +168,11 @@ namespace FRMDeportistas
                 
                 //seteo al deportista con su nueva categoria y lo modifico en la base de datos
                 deportistaSeleccionado.BajarCategoria();
+
                 clasificacion.ModificarDato(deportistaSeleccionado);
 
                 this.dataGrid.DataSource = null; // Limpia el DataGridView
+
                 this.TipoDeObjeto(deportistaSeleccionado); // Establece la nueva base de datos del datagrid
             }
         }
@@ -188,6 +192,7 @@ namespace FRMDeportistas
                 clasificacion.ModificarDato(deportistaSeleccionado);
 
                 this.dataGrid.DataSource = null; // Limpia el DataGridView
+                clasificacion.ActualizarListas();
                 this.TipoDeObjeto(deportistaSeleccionado); // Establece la nueva base de datos
             }
         }

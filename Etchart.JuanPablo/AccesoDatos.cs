@@ -11,11 +11,12 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public delegate void DelegadoError(object sender, MiExcepcionDB e);
+    public delegate void DelegadoError(object sender, DbEventArgs dbEvent);
 
     public class AccesoDatos
     {
         public event DelegadoError EventoError;
+        public event DelegadoError EventoOkey;
 
         public SqlCommand comando;//con este objeto realizo las querys
         private SqlConnection conexion;// se encarga de conectarse con el motor de la base de datos
@@ -48,10 +49,7 @@ namespace Entidades
             this.listaAtletismo = this.TraerDatos<Atletismo>();
         }
 
-        public virtual void ErrorOcurrido(MiExcepcionDB e)
-        {
-            EventoError?.Invoke(this, e);
-        }
+
 
         public bool pruebaConexion()
         {
@@ -254,7 +252,7 @@ namespace Entidades
             }
             catch (Exception ex) 
             {
-                this.ErrorOcurrido(new MiExcepcionDB(ex.ToString()));
+                
             }
 
             finally 
@@ -272,6 +270,8 @@ namespace Entidades
             bool retorno = false;
             try
             {
+                DbEventArgs e = new DbEventArgs();
+
                 this.comando = new SqlCommand();
                 this.comando.CommandType = System.Data.CommandType.Text;
 
@@ -300,14 +300,15 @@ namespace Entidades
                 this.comando.Connection = this.conexion;
                 this.conexion.Open();
                 int filasAfectadas = this.comando.ExecuteNonQuery();
-                if (filasAfectadas ==1)
+                if (filasAfectadas == 1)
                 {
+                    EventoOkey?.Invoke(this, e);
                     this.ActualizarListas();
                     retorno = true;
                 }
-                else if (filasAfectadas==0)
+                else if (filasAfectadas == 0)
                 {
-                    
+                    EventoError?.Invoke(this, e);
                 }
             }
             catch (Exception ex) 
@@ -331,6 +332,7 @@ namespace Entidades
 
             try
             {
+                DbEventArgs e = new DbEventArgs();
                 this.conexion.Open();
                 this.comando = new SqlCommand();
                 this.comando.CommandType = System.Data.CommandType.Text;
@@ -360,12 +362,13 @@ namespace Entidades
                 int filasAfectadas = this.comando.ExecuteNonQuery();
                 if (filasAfectadas == 1)
                 {
+                    EventoOkey?.Invoke(this, e);
                     this.ActualizarListas();
                     retorno = true;
                 }
                 else if (filasAfectadas == 0)
                 {
-                    // No se encontró ninguna fila para eliminar
+                    EventoError?.Invoke(this, e);
                 }
             }
             catch (Exception ex)

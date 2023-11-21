@@ -39,18 +39,22 @@ namespace FRMDeportistas
         public FRMMenuPrincipal()
         {
             InitializeComponent();
-            path = "Deportistas.json";
-            
             this.clasificacion = new AccesoDatos();
-            clasificacion.ErrorOcurrido += AccesoDatos_ErrorOcurrido;
+            path = "Deportistas.json";
+            clasificacion.EventoError += AccesoDatos_Error;
+            clasificacion.EventoOkey += AccesoDatos_Okey;
             AbrirFormularioHijo(new AgregarPorDeporte(this.clasificacion), this.btnAgregar.Text);
             
 
         }
 
-        private void AccesoDatos_ErrorOcurrido(MiExcepcionDB dB)
+        private void AccesoDatos_Error(object sender, DbEventArgs mensaje)
         {
-            
+            MessageBox.Show(mensaje.mensajeError);
+        }      
+        private void AccesoDatos_Okey(object sender, DbEventArgs mensaje)
+        {
+            MessageBox.Show(mensaje.mensajeOkey);
         }
 
 
