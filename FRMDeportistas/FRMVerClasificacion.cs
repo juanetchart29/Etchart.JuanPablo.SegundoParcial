@@ -41,7 +41,7 @@ namespace FRMDeportistas
         private void btnEscalada_Click(object sender, EventArgs e)
         {
             this.dataGrid.DataSource = null; // Limpia el DataGridView
-            
+
             this.dataGrid.DataSource = clasificacion.listaEscalada;
             this.ultimoBotonPresionado = ETipoDeDeportista.Escalada.ToString();
         }
@@ -79,8 +79,7 @@ namespace FRMDeportistas
                 int indiceSeleccionado = dataGrid.SelectedRows[0].Index;
                 Deportista deportistaSeleccionado = (Deportista)dataGrid.Rows[indiceSeleccionado].DataBoundItem;
 
-                //clasificacion -= deportistaSeleccionado;
-                //clasificacion.MandarDeportistas();
+                clasificacion.EliminarDato(deportistaSeleccionado);
 
                 this.dataGrid.DataSource = null; // Limpia el DataGridView
                 this.TipoDeObjeto(deportistaSeleccionado); // Establece la nueva base de datos
@@ -151,9 +150,13 @@ namespace FRMDeportistas
             {
                 int indiceSeleccionado = dataGrid.SelectedRows[0].Index;
                 Deportista deportistaSeleccionado = (Deportista)dataGrid.Rows[indiceSeleccionado].DataBoundItem;
+                
+                //seteo al deportista con su nueva categoria y lo modifico en la base de datos
                 deportistaSeleccionado.BajarCategoria();
+                clasificacion.ModificarDato(deportistaSeleccionado);
+
                 this.dataGrid.DataSource = null; // Limpia el DataGridView
-                this.TipoDeObjeto(deportistaSeleccionado); // Establece la nueva base de datos
+                this.TipoDeObjeto(deportistaSeleccionado); // Establece la nueva base de datos del datagrid
             }
         }
 
@@ -167,7 +170,10 @@ namespace FRMDeportistas
             {
                 int indiceSeleccionado = dataGrid.SelectedRows[0].Index;
                 Deportista deportistaSeleccionado = (Deportista)dataGrid.Rows[indiceSeleccionado].DataBoundItem;
+
                 deportistaSeleccionado.SubirCategoria();
+                clasificacion.ModificarDato(deportistaSeleccionado);
+
                 this.dataGrid.DataSource = null; // Limpia el DataGridView
                 this.TipoDeObjeto(deportistaSeleccionado); // Establece la nueva base de datos
             }

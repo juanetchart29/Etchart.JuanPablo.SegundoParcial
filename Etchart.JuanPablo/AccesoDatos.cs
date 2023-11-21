@@ -313,5 +313,65 @@ namespace Entidades
             }
             return retorno;
         }
+
+
+        public bool EliminarDato(Deportista deportista)
+        {
+            bool retorno = false;
+
+            try
+            {
+                this.conexion.Open();
+                this.comando = new SqlCommand();
+                this.comando.CommandType = System.Data.CommandType.Text;
+                this.comando.Connection = this.conexion;
+
+                this.comando.Parameters.Clear();
+                this.comando.Parameters.AddWithValue("@id", deportista.Id);
+
+                if (deportista is Voley)
+                {
+                    this.comando.CommandText = "DELETE FROM Voley WHERE id = @id";
+                    
+                }
+                else if (deportista is Escalada)
+                {
+                    this.comando.CommandText = "DELETE FROM Escalada WHERE id = @id";
+                }
+                else if (deportista is Atletismo)
+                {
+                    this.comando.CommandText = "DELETE FROM Atletismo WHERE id = @id";
+                }
+                else
+                {
+                    // Tipo de dato no válido
+                }
+
+                int filasAfectadas = this.comando.ExecuteNonQuery();
+                if (filasAfectadas == 1)
+                {
+                    this.ActualizarListas();
+                    retorno = true;
+                }
+                else if (filasAfectadas == 0)
+                {
+                    // No se encontró ninguna fila para eliminar
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones si es necesario
+            }
+            finally
+            {
+                if (this.conexion.State == System.Data.ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+
+            return retorno;
+        }
+
     }
 }

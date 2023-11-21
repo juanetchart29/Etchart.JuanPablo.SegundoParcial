@@ -33,13 +33,13 @@
             btnEliminar = new Button();
             btnModificar = new Button();
             panelEditar = new Panel();
+            comboBoxOrden = new ComboBox();
+            comboBoxOrdenar = new ComboBox();
             btnOrdenar = new Button();
             lblOrden = new Label();
             lblOrdenar = new Label();
             btnSubirCategoria = new Button();
             btnBajarCategoria = new Button();
-            comboBoxOrdenar = new ComboBox();
-            comboBoxOrden = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)clasificacionBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGrid).BeginInit();
             panelEditar.SuspendLayout();
@@ -51,9 +51,12 @@
             // 
             // dataGrid
             // 
+            dataGrid.AllowUserToAddRows = false;
+            dataGrid.AllowUserToDeleteRows = false;
             dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGrid.Location = new Point(154, 36);
             dataGrid.Name = "dataGrid";
+            dataGrid.ReadOnly = true;
             dataGrid.RowTemplate.Height = 25;
             dataGrid.Size = new Size(778, 367);
             dataGrid.TabIndex = 0;
@@ -125,6 +128,24 @@
             panelEditar.Size = new Size(944, 417);
             panelEditar.TabIndex = 7;
             // 
+            // comboBoxOrden
+            // 
+            comboBoxOrden.FormattingEnabled = true;
+            comboBoxOrden.Items.AddRange(new object[] { "Ascendente", "Descendente" });
+            comboBoxOrden.Location = new Point(3, 66);
+            comboBoxOrden.Name = "comboBoxOrden";
+            comboBoxOrden.Size = new Size(121, 23);
+            comboBoxOrden.TabIndex = 21;
+            // 
+            // comboBoxOrdenar
+            // 
+            comboBoxOrdenar.FormattingEnabled = true;
+            comboBoxOrdenar.Items.AddRange(new object[] { "Nombre", "Apellido", "Edad" });
+            comboBoxOrdenar.Location = new Point(3, 22);
+            comboBoxOrdenar.Name = "comboBoxOrdenar";
+            comboBoxOrdenar.Size = new Size(121, 23);
+            comboBoxOrdenar.TabIndex = 20;
+            // 
             // btnOrdenar
             // 
             btnOrdenar.Location = new Point(27, 106);
@@ -172,24 +193,6 @@
             btnBajarCategoria.Text = "Decender Categoria";
             btnBajarCategoria.UseVisualStyleBackColor = true;
             btnBajarCategoria.Click += btnBajarCategoria_Click;
-            // 
-            // comboBoxOrdenar
-            // 
-            comboBoxOrdenar.FormattingEnabled = true;
-            comboBoxOrdenar.Items.AddRange(new object[] { "Nombre", "Apellido", "Edad" });
-            comboBoxOrdenar.Location = new Point(3, 22);
-            comboBoxOrdenar.Name = "comboBoxOrdenar";
-            comboBoxOrdenar.Size = new Size(121, 23);
-            comboBoxOrdenar.TabIndex = 20;
-            // 
-            // comboBoxOrden
-            // 
-            comboBoxOrden.FormattingEnabled = true;
-            comboBoxOrden.Items.AddRange(new object[] { "Ascendente", "Descendente" });
-            comboBoxOrden.Location = new Point(3, 66);
-            comboBoxOrden.Name = "comboBoxOrden";
-            comboBoxOrden.Size = new Size(121, 23);
-            comboBoxOrden.TabIndex = 21;
             // 
             // FRMVerClasificacion
             // 

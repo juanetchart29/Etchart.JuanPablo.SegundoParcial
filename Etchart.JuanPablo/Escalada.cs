@@ -166,6 +166,8 @@ namespace Etchart.JuanPablo
             return base.Equals(obj);
         }
 
+
+
         #endregion
     }
 }
