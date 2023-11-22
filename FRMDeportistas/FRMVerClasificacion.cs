@@ -193,6 +193,7 @@ namespace FRMDeportistas
 
                 if (deportistaSeleccionado is ICategorias categorias)
                 {
+                    MessageBox.Show("que carambola pasaaaaaa");
                     categorias.SubirCategoria();
                 }
 

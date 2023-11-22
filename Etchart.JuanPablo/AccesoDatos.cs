@@ -189,9 +189,22 @@ namespace Entidades
                     EventoError?.Invoke(this, e);
                 }
             }
-            catch   ( Exception e )
+            catch (SqlException sqlex)
             {
-                // Handle exceptions if needed
+                throw new MiExcepcionDB(sqlex.Message);
+            }
+            catch (InvalidOperationException invalidOpEx)
+            {
+                throw new MiExcepcionDB(invalidOpEx.Message);
+            }
+            catch (MiExcepcionDB dbex)
+            {
+                DbEventArgs e = new DbEventArgs(dbex.Message);
+                EventoExcepcion?.Invoke(this, e);
+            }
+            catch (Exception ex)
+            {
+                throw new MiExcepcionDB(ex.Message);
             }
             finally
             {
@@ -256,9 +269,22 @@ namespace Entidades
                 }
                 this.lector.Close();
             }
-            catch (Exception ex) 
+            catch (SqlException sqlex)
             {
-                
+                throw new MiExcepcionDB(sqlex.Message);
+            }
+            catch (InvalidOperationException invalidOpEx)
+            {
+                throw new MiExcepcionDB(invalidOpEx.Message);
+            }
+            catch (MiExcepcionDB dbex)
+            {
+                DbEventArgs e = new DbEventArgs(dbex.Message);
+                EventoExcepcion?.Invoke(this, e);
+            }
+            catch (Exception ex)
+            {
+                throw new MiExcepcionDB(ex.Message);
             }
 
             finally 
@@ -317,9 +343,9 @@ namespace Entidades
                     EventoError?.Invoke(this, e);
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                // Handle exceptions if needed
+                
             }
             finally
             {
@@ -377,22 +403,9 @@ namespace Entidades
                     EventoError?.Invoke(this, e);
                 }
             }
-            catch (SqlException sqlex)
-            {
-                throw new MiExcepcionDB(sqlex.Message);
-            }
-            catch (InvalidOperationException invalidOpEx)
-            {
-                throw new MiExcepcionDB(invalidOpEx.Message);
-            }
-            catch(MiExcepcionDB dbex)
-            {
-                DbEventArgs e = new DbEventArgs(dbex.Message);
-                EventoExcepcion?.Invoke(this,e);
-            }
             catch(Exception ex)
             {
-                throw new MiExcepcionDB(ex.Message);
+               
             }
             finally
             {

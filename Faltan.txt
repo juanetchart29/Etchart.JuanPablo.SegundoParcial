@@ -1,30 +1,5 @@
 EXTRA:
 agregarle el id a mi constructor
 
-
 -separar todo en Region y EndRegion
-
-
----------cambios de base de datos para el crud------
-cuando asciendo a un escalador que esta en mayores se elimina toda la lista:/ local
-
-
----------manejar errores con delegados y eventos----
-me tira error de no se puede agregar a ErrorOcurrido porque es grupo de metodos puedo preguntar en la clase.:)mañana
-
----------Realizar unnit test par chequear que todos los campos se completaron correctamente ;)
-
-
-
-
-Implementar:
--Interfaces
--Unit Testing
--Manejo de Excepciones
--Task							MEDIAS
--Delegados						LISTO
--eventos						LISTO
--Sql							LISTO
--Generics						LISTO	
-
 -----chequear el diagrama de clasees
