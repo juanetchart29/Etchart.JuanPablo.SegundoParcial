@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Etchart.JuanPablo
     /// <summary>
     /// Clase que representa un jugador de voleibol.
     /// </summary>
-    public class Voley : Deportista
+    public class Voley : Deportista, ICategorias
     {
         public string deporte = "voley"; // Esto es necesario para la deserialización
 
@@ -91,7 +92,7 @@ namespace Etchart.JuanPablo
         /// <summary>
         /// Incrementa la categoría del jugador de voleibol.
         /// </summary>
-        public override void SubirCategoria()
+        public void SubirCategoria()
         {
             switch (this.Categoria)
             {
@@ -109,7 +110,7 @@ namespace Etchart.JuanPablo
         /// <summary>
         /// Decrementa la categoría del jugador de voleibol.
         /// </summary>
-        public override void BajarCategoria()
+        public void BajarCategoria()
         {
             switch (this.Categoria)
             {

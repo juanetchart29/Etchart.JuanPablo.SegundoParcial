@@ -174,12 +174,12 @@ namespace Etchart.JuanPablo
         /// <summary>
         /// Sube la categoría del deportista.
         /// </summary>
-        public abstract void SubirCategoria();
+       
 
         /// <summary>
         /// Baja la categoría del deportista.
         /// </summary>
-        public abstract void BajarCategoria();
+        
 
         /// <summary>
         /// Muestra la información del deportista en formato de cadena.

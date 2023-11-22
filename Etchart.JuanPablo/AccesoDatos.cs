@@ -308,9 +308,9 @@ namespace Entidades
                 int filasAfectadas = this.comando.ExecuteNonQuery();
                 if (filasAfectadas == 1)
                 {
-                    EventoOkey?.Invoke(this, e);
                     this.ActualizarListas();
                     retorno = true;
+                    EventoOkey?.Invoke(this, e);
                 }
                 else if (filasAfectadas == 0)
                 {

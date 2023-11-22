@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Text;
 
 namespace Etchart.JuanPablo
@@ -6,7 +7,7 @@ namespace Etchart.JuanPablo
     /// <summary>
     /// Clase que representa un deportista de atletismo.
     /// </summary>
-    public class Atletismo : Deportista
+    public class Atletismo : Deportista,ICategorias
     {
         /// <summary>
         /// Campo utilizado para la deserialización.
@@ -77,7 +78,7 @@ namespace Etchart.JuanPablo
         /// <summary>
         /// Sube la categoría del atletismo.
         /// </summary>
-        public override void SubirCategoria()
+        public void SubirCategoria()
         {
             switch (this.Categoria)
             {
@@ -95,7 +96,7 @@ namespace Etchart.JuanPablo
         /// <summary>
         /// Baja la categoría del atletismo.
         /// </summary>
-        public override void BajarCategoria()
+        public  void BajarCategoria()
         {
             switch (this.Categoria)
             {

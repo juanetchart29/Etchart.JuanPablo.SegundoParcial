@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Etchart.JuanPablo
     /// <summary>
     /// Clase que representa a un deportista de escalada.
     /// </summary>
-    public class Escalada : Deportista
+    public class Escalada : Deportista, ICategorias
     {
         #region Atributos
 
@@ -97,7 +98,7 @@ namespace Etchart.JuanPablo
         /// <summary>
         /// Incrementa la categoría del deportista de escalada.
         /// </summary>
-        public override void SubirCategoria()
+        public void SubirCategoria()
         {
             switch (this.Categoria)
             {
@@ -115,7 +116,7 @@ namespace Etchart.JuanPablo
         /// <summary>
         /// Reduce la categoría del deportista de escalada.
         /// </summary>
-        public override void BajarCategoria()
+        public void BajarCategoria()
         {
             switch (this.Categoria)
             {
@@ -126,6 +127,8 @@ namespace Etchart.JuanPablo
                     break;
                 case "Mayores":
                     this.Categoria = "PromoA";
+                    break;
+                default:
                     break;
             }
         }

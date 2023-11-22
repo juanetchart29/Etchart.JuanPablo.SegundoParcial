@@ -113,11 +113,11 @@ namespace FRMDeportistas
             }
             else if (deportista is Atletismo)
             {
-                MessageBox.Show(clasificacion.listaAtletismo.Count.ToString());
+                this.dataGrid.DataSource = clasificacion.listaAtletismo;
             }
             else if (deportista is Voley)
             {
-                MessageBox.Show(clasificacion.listaVoley.Count.ToString());
+                this.dataGrid.DataSource = clasificacion.listaVoley;
             }
         }
 
@@ -165,9 +165,12 @@ namespace FRMDeportistas
             {
                 int indiceSeleccionado = dataGrid.SelectedRows[0].Index;
                 Deportista deportistaSeleccionado = (Deportista)dataGrid.Rows[indiceSeleccionado].DataBoundItem;
-                
+
                 //seteo al deportista con su nueva categoria y lo modifico en la base de datos
-                deportistaSeleccionado.BajarCategoria();
+                if (deportistaSeleccionado is ICategorias categorias)
+                {
+                    categorias.BajarCategoria();
+                }
 
                 clasificacion.ModificarDato(deportistaSeleccionado);
 
@@ -188,7 +191,12 @@ namespace FRMDeportistas
                 int indiceSeleccionado = dataGrid.SelectedRows[0].Index;
                 Deportista deportistaSeleccionado = (Deportista)dataGrid.Rows[indiceSeleccionado].DataBoundItem;
 
-                deportistaSeleccionado.SubirCategoria();
+                if (deportistaSeleccionado is ICategorias categorias)
+                {
+                    categorias.SubirCategoria();
+                }
+
+
                 clasificacion.ModificarDato(deportistaSeleccionado);
 
                 this.dataGrid.DataSource = null; // Limpia el DataGridView
