@@ -16,7 +16,10 @@ namespace Entidades
         public static List<Usuario> usuarios;
         static ArchivoUsuarios()
         {
-            ArchivoUsuarios.TraerUsuarios();
+            ArchivoUsuarios.pathLog = "Registro.log";
+            ArchivoUsuarios.pathUsuarios = "Usuarios.json";
+            ArchivoUsuarios.usuarios = new List<Usuario>();
+            ArchivoUsuarios.usuarios = ArchivoUsuarios.TraerUsuarios();
         }
 
         /// <summary>

@@ -20,8 +20,14 @@ namespace FRMDeportistas
         {
             this.correo = txtboxEmail.Text;
             this.contraseña = txtBoxContraseña.Text;
-            
 
+            this.usuarioActual = this.UsuarioCorrecto();
+            if (this.usuarioActual is null)
+            {
+                MessageBox.Show("Usuario y contraseña incorrectos");
+            }
+            else 
+                LanzarForm();
         }
 
         public Usuario UsuarioCorrecto()
