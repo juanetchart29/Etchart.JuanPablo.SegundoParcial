@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Comment CommentText="Trae los Datos de un Json&#xD;&#xA;">
-    <Position X="10.042" Y="7.781" Height="0.333" Width="1.7" />
+    <Position X="14.38" Y="9.031" Height="0.333" Width="1.7" />
   </Comment>
   <Class Name="Entidades.AccesoDatos">
-    <Position X="7" Y="0.5" Width="4" />
+    <Position X="11.5" Y="1.75" Width="4" />
     <TypeIdentifier>
       <HashCode>IAAAEgAAAACACUQBICABAAgAADAAcCgBAAAAAAAAgAE=</HashCode>
       <FileName>AccesoDatos.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.ArchivoUsuarios">
-    <Position X="14.25" Y="0.5" Width="3" />
+    <Position X="18.75" Y="1.75" Width="3" />
     <TypeIdentifier>
       <HashCode>BAAAAAQAAAAAAAAAAACAIBAAAAAQAAAIAAACAAAAAAQ=</HashCode>
       <FileName>ArchivoUsuarios.cs</FileName>
@@ -26,7 +26,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.Clasificacion">
-    <Position X="8.75" Y="7.75" Width="4.25" />
+    <Position X="12.75" Y="8.75" Width="4.25" />
     <TypeIdentifier>
       <HashCode>IAAQAAAAAAAAAAQAwAEBAAAAAAAAIAAAAAIAAAAAAiA=</HashCode>
       <FileName>Clasificacion.cs</FileName>
@@ -41,7 +41,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.Usuario">
-    <Position X="11.25" Y="0.5" Width="2.75" />
+    <Position X="15.75" Y="1.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQBAACEAQAAhAAAAIQAAACAAAASAACAECA=</HashCode>
       <FileName>Usuario.cs</FileName>
@@ -63,14 +63,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.RelojEventArgs">
-    <Position X="17.5" Y="3.5" Width="3.25" />
+    <Position X="22" Y="4.75" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>RelojEventArgs.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Reloj">
-    <Position X="17.5" Y="0.5" Width="2.5" />
+    <Position X="22" Y="1.75" Width="2.5" />
     <NestedTypes>
       <Delegate Name="Entidades.Reloj.NotificadorCambioTiempo" Collapsed="true">
         <TypeIdentifier>
@@ -84,14 +84,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.MiExcepcionDB">
-    <Position X="17.5" Y="5.5" Width="2.75" />
+    <Position X="22" Y="6.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAACA=</HashCode>
       <FileName>MiExcepcionDB.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.DbEventArgs">
-    <Position X="14.5" Y="5.75" Width="2.5" />
+    <Position X="19" Y="7" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAAAAAAAA=</HashCode>
       <FileName>DbEventArgs.cs</FileName>
@@ -112,7 +112,7 @@
     </TypeIdentifier>
   </Enum>
   <Delegate Name="Entidades.DelegadoError">
-    <Position X="14.5" Y="4.25" Width="2.5" />
+    <Position X="19" Y="5.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAgAAA=</HashCode>
       <FileName>AccesoDatos.cs</FileName>
