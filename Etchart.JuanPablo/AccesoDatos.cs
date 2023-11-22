@@ -392,7 +392,7 @@ namespace Entidades
             }
             catch(Exception ex)
             {
-                throw new MiExcepcionDB("se produjo un error durante la operacion en la base de datos");
+                throw new MiExcepcionDB(ex.Message);
             }
             finally
             {
