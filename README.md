@@ -4,7 +4,7 @@
 ![Diagrama Completo](src/diagramaCompleto.png)
 
 ## Descripción del Proyecto
-
+es la segunda parte de : https://github.com/juanetchart29/Etchart.JuanPablo.PrimerParcial_Labo2
 Este proyecto, denominado "Etchart.JuanPablo.SegundoParcial", está diseñado para gestionar y clasificar deportistas en tres categorías: escalada, atletismo y vóley. La aplicación, desarrollada en C# utilizando Windows Forms, incorpora funcionalidades de Crear, Leer, Actualizar y Eliminar (CRUD) para administrar la información de los deportistas.
 
 ## Estructura del Proyecto
