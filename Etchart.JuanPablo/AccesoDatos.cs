@@ -17,6 +17,7 @@ namespace Entidades
     {
         public event DelegadoError EventoError;
         public event DelegadoError EventoOkey;
+        public event DelegadoError EventoExcepcion;
 
         public SqlCommand comando;//con este objeto realizo las querys
         private SqlConnection conexion;// se encarga de conectarse con el motor de la base de datos
@@ -376,9 +377,22 @@ namespace Entidades
                     EventoError?.Invoke(this, e);
                 }
             }
-            catch (Exception ex)
+            catch (SqlException sqlex)
             {
-                // Manejo de excepciones si es necesario
+                throw new MiExcepcionDB(sqlex.Message);
+            }
+            catch (InvalidOperationException invalidOpEx)
+            {
+                throw new MiExcepcionDB(invalidOpEx.Message);
+            }
+            catch(MiExcepcionDB dbex)
+            {
+                DbEventArgs e = new DbEventArgs(dbex.Message);
+                EventoExcepcion?.Invoke(this,e);
+            }
+            catch(Exception ex)
+            {
+                throw new MiExcepcionDB("se produjo un error durante la operacion en la base de datos");
             }
             finally
             {

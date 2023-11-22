@@ -10,10 +10,16 @@ namespace Entidades
     {
         public string mensajeOkey {  get; }
         public string mensajeError {  get; }
+        public string mensajeExcepcion {  get; }
+
         public DbEventArgs()
         {
             this.mensajeError = "No se han podido Realizar los cambios en la base de datos";
             this.mensajeOkey = "Se han Realizado los cambios en la base de datos";
+        }
+        public DbEventArgs(string mensajeExcepcion):this() 
+        {
+            this.mensajeExcepcion = mensajeExcepcion;
         }
     }
 }

@@ -47,13 +47,18 @@ namespace FRMDeportistas
             path = "Deportistas.json";
             clasificacion.EventoError += this.AccesoDatos_Error;
             clasificacion.EventoOkey += this.AccesoDatos_Okey;
-
+            clasificacion.EventoExcepcion += this.AccesoDatos_Excepcion;
             clock.SegundoCambiado += this.Reloj_corriendo;
 
             AbrirFormularioHijo(new AgregarPorDeporte(this.clasificacion), this.btnAgregar.Text);
 
 
         }
+        private void AccesoDatos_Excepcion(object sender, DbEventArgs e)
+        {
+            MessageBox.Show($"{e.mensajeExcepcion}");
+        }
+
 
         private void Reloj_corriendo(object sender, RelojEventArgs e)
         {
