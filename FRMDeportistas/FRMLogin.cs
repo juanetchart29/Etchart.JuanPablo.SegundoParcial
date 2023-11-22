@@ -1,5 +1,7 @@
 ﻿
 using Entidades;
+using Microsoft.Data.SqlClient;
+
 namespace FRMDeportistas
 {
     public partial class FRMLogin : Form
@@ -30,11 +32,25 @@ namespace FRMDeportistas
                 LanzarForm();
         }
 
+
+        private bool EmailValido(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public Usuario UsuarioCorrecto()
         {
-            if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(contraseña))
+            if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(contraseña) || !EmailValido(correo))
             {
-                throw new ArgumentNullException();
+                return null;
             }
 
 
@@ -84,7 +100,7 @@ namespace FRMDeportistas
             this.Hide();
             principal.ShowDialog();
 
-            if (principal.DialogResult == DialogResult.OK)
+            if (principal.DialogResult != DialogResult.OK)
             {
                 this.Close();
             }

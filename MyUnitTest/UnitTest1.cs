@@ -4,29 +4,37 @@ namespace MyUnitTest
     [TestClass]
     public class UnitTest
     {
-        [DataRow("a@a","1234")]
-        [DataRow("a@a","1233")]
         [TestMethod]
-        public void LogearUsuarioValido(string user, string contraseña)
+        public void LogearUsuario_UsuarioExistente_DevuelveUsuario()
         {
-
-            //AA
-
-            //ARANGE - GIVEN 
-            //usuario y contraseña existente
+            // Arrange
+            string correo = "a@a";
+            string contraseña = "1234";
             Usuario usuario;
 
-            //ACT -WHEN
-            //intentar logearme
-            usuario = ArchivoUsuarios.LogearUsuario(user, contraseña);
+            // Act
+            usuario = ArchivoUsuarios.LogearUsuario(correo, contraseña);
 
-
+            // Assert
             Assert.IsNotNull(usuario);
-            Assert.AreEqual(usuario.Correo, user);
-            Assert.AreEqual(usuario.Clave, contraseña);
-            //ASERT - THEN 
+            Assert.AreEqual(correo, usuario.Correo);
+            Assert.AreEqual(contraseña, usuario.Clave);
         }
 
+        [TestMethod]
+        public void LogearUsuario_UsuarioNoExistente_DevuelveNull()
+        {
+            // Arrange
+            string correo = "a@a";
+            string contraseña = "1233";
+            Usuario usuario;
+
+            // Act
+            usuario = ArchivoUsuarios.LogearUsuario(correo, contraseña);
+
+            // Assert
+            Assert.IsNull(usuario);
+        }
     }
 }
 
