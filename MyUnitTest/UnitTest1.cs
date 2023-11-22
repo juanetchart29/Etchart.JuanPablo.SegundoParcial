@@ -23,7 +23,7 @@ namespace MyUnitTest
 
             Assert.IsNotNull(usuario);
             Assert.AreEqual(usuario.Correo, user);
-
+            Assert.AreEqual(usuario.Clave, contraseña);
             //ASERT - THEN 
         }
 
